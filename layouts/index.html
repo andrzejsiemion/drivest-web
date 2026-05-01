@@ -19,8 +19,8 @@
       <div class="lp-iphone lp-hero-iphone">
         <div class="lp-notch"></div>
         <div class="lp-screen">
-          <img src="/images/simulator/screen1.png" alt="Drivest app" class="lp-screen-light" loading="eager">
-          <img src="/images/simulator/screen2.png" alt="Drivest app" class="lp-screen-dark" loading="eager">
+          <img src="/images/simulator/screen-fuel-bright.png" alt="Drivest app" class="lp-screen-light" loading="eager">
+          <img src="/images/simulator/screen-fuel-dark.png" alt="Drivest app" class="lp-screen-dark" loading="eager">
         </div>
       </div>
     </div>
@@ -83,16 +83,18 @@
   <div class="lp-scroll-wrap">
     <div class="lp-scroll-track">
       {{ $screens := slice
-          (dict "src" "/images/simulator/screen2.png" "alt" "Fuel tracking")
-          (dict "src" "/images/simulator/screen3.png" "alt" "Add vehicle")
-          (dict "src" "/images/simulator/screen4.png" "alt" "Vehicle list")
-          (dict "src" "/images/simulator/screen6.png" "alt" "Statistics")
+          (dict "light" "/images/simulator/screen-fillup-bright.png" "dark" "/images/simulator/screen-fillup-dark.png" "show" "light" "alt" "Fill-up tracking")
+          (dict "light" "/images/simulator/screen-bill-bright.png"   "dark" "/images/simulator/screen-bill-dark.png"   "show" "dark"  "alt" "Billing")
+          (dict "light" "/images/simulator/screen-cost-bright.png"   "dark" "/images/simulator/screen-cost-dark.png"   "show" "light" "alt" "Cost tracking")
+          (dict "light" "/images/simulator/screen-stat-bright.png"   "dark" "/images/simulator/screen-stat-dark.png"   "show" "dark" "alt" "Statistics")
       }}
       {{ range $screens }}
-      <div class="lp-iphone lp-screenshot-iphone" role="button" tabindex="0" aria-label="View {{ .alt }} screenshot">
+      {{ $src := cond (eq .show "dark") .dark .light }}
+      <div class="lp-iphone lp-screenshot-iphone" role="button" tabindex="0" aria-label="View {{ .alt }} screenshot"
+           data-src-light="{{ .light }}" data-src-dark="{{ .dark }}">
         <div class="lp-notch"></div>
         <div class="lp-screen">
-          <img src="{{ .src }}" alt="Drivest — {{ .alt }}" loading="lazy">
+          <img src="{{ $src }}" alt="Drivest — {{ .alt }}" loading="lazy">
         </div>
       </div>
       {{ end }}
@@ -138,11 +140,14 @@
 
   function show(index) {
     current = (index + phones.length) % phones.length;
-    var img = phones[current].querySelector('.lp-screen img');
-    lbImgLight.src = img.src;
-    lbImgLight.alt = img.alt;
-    lbImgDark.src  = img.src;
-    lbImgDark.alt  = img.alt;
+    var phone = phones[current];
+    var srcLight = phone.dataset.srcLight;
+    var srcDark  = phone.dataset.srcDark;
+    var alt      = phone.querySelector('.lp-screen img').alt;
+    lbImgLight.src = srcLight;
+    lbImgLight.alt = alt;
+    lbImgDark.src  = srcDark;
+    lbImgDark.alt  = alt;
     updateDots();
   }
 
