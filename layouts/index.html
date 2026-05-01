@@ -77,30 +77,108 @@
 <!-- SCREENSHOTS -->
 <section class="lp-screenshots" id="screenshots">
   <div class="lp-container">
-    <h2 class="lp-section-title lp-on-dark">See it in action</h2>
-    <p class="lp-section-sub lp-on-dark">Clean, fast, and works entirely on your device.</p>
+    <h2 class="lp-section-title">See it in action</h2>
+    <p class="lp-section-sub">Clean, fast, and works entirely on your device.</p>
   </div>
   <div class="lp-scroll-wrap">
     <div class="lp-scroll-track">
       {{ $screens := slice
-          (dict "src" "/images/simulator/screen1.png" "alt" "Cost tracking")
-          (dict "src" "/images/simulator/screen2.png" "alt" "Fuel tracking")
-          (dict "src" "/images/simulator/screen3.png" "alt" "Add vehicle")
-          (dict "src" "/images/simulator/screen4.png" "alt" "Vehicle list")
-          (dict "src" "/images/simulator/screen5.png" "alt" "Integrations")
-          (dict "src" "/images/simulator/screen6.png" "alt" "Statistics")
+          (dict "dark" "/images/simulator/screen2.png" "light" "/images/simulator/screen1.png" "alt" "Fuel tracking")
+          (dict "dark" "/images/simulator/screen3.png" "light" "/images/simulator/screenL3.png" "alt" "Add vehicle")
+          (dict "dark" "/images/simulator/screen4.png" "light" "/images/simulator/screenL2.png" "alt" "Vehicle list")
+          (dict "dark" "/images/simulator/screen6.png" "light" "/images/simulator/screenL4.png" "alt" "Statistics")
       }}
       {{ range $screens }}
-      <div class="lp-iphone lp-screenshot-iphone">
+      <div class="lp-iphone lp-screenshot-iphone" role="button" tabindex="0" aria-label="View {{ .alt }} screenshot">
         <div class="lp-notch"></div>
         <div class="lp-screen">
-          <img src="{{ .src }}" alt="Drivest — {{ .alt }}" loading="lazy">
+          <img src="{{ .light }}" alt="Drivest — {{ .alt }}" class="lp-screen-light" loading="lazy">
+          <img src="{{ .dark }}"  alt="Drivest — {{ .alt }}" class="lp-screen-dark"  loading="lazy">
         </div>
       </div>
       {{ end }}
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lp-lightbox" id="lp-lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+  <div class="lp-lightbox-backdrop"></div>
+  <button class="lp-lightbox-close" aria-label="Close">&#x2715;</button>
+  <button class="lp-lightbox-arrow lp-lightbox-prev" aria-label="Previous screenshot">&#8249;</button>
+  <div class="lp-lightbox-img-wrap">
+    <img class="lp-lightbox-img lp-screen-light" id="lp-lightbox-img-light" src="" alt="Screenshot">
+    <img class="lp-lightbox-img lp-screen-dark"  id="lp-lightbox-img-dark"  src="" alt="Screenshot">
+  </div>
+  <button class="lp-lightbox-arrow lp-lightbox-next" aria-label="Next screenshot">&#8250;</button>
+  <div class="lp-lightbox-dots" id="lp-lightbox-dots"></div>
+</div>
+
+<script>
+(function () {
+  var lightbox    = document.getElementById('lp-lightbox');
+  var lbImgLight  = document.getElementById('lp-lightbox-img-light');
+  var lbImgDark   = document.getElementById('lp-lightbox-img-dark');
+  var dotsWrap    = document.getElementById('lp-lightbox-dots');
+  var phones      = Array.from(document.querySelectorAll('.lp-screenshot-iphone'));
+  var current     = 0;
+
+  /* build dot indicators */
+  phones.forEach(function (_, i) {
+    var d = document.createElement('span');
+    d.className = 'lp-lb-dot';
+    d.addEventListener('click', function () { show(i); });
+    dotsWrap.appendChild(d);
+  });
+
+  function updateDots() {
+    Array.from(dotsWrap.children).forEach(function (d, i) {
+      d.classList.toggle('lp-lb-dot--active', i === current);
+    });
+  }
+
+  function show(index) {
+    current = (index + phones.length) % phones.length;
+    var imgLight = phones[current].querySelector('.lp-screen .lp-screen-light');
+    var imgDark  = phones[current].querySelector('.lp-screen .lp-screen-dark');
+    lbImgLight.src = imgLight.src;
+    lbImgLight.alt = imgLight.alt;
+    lbImgDark.src  = imgDark.src;
+    lbImgDark.alt  = imgDark.alt;
+    updateDots();
+  }
+
+  function open(index) {
+    show(index);
+    lightbox.classList.add('lp-lightbox--open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lightbox.classList.remove('lp-lightbox--open');
+    document.body.style.overflow = '';
+  }
+
+  phones.forEach(function (phone, i) {
+    phone.addEventListener('click', function () { open(i); });
+    phone.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+    });
+  });
+
+  lightbox.querySelector('.lp-lightbox-backdrop').addEventListener('click', close);
+  lightbox.querySelector('.lp-lightbox-close').addEventListener('click', close);
+  lightbox.querySelector('.lp-lightbox-prev').addEventListener('click', function () { show(current - 1); });
+  lightbox.querySelector('.lp-lightbox-next').addEventListener('click', function () { show(current + 1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('lp-lightbox--open')) return;
+    if (e.key === 'Escape')      close();
+    if (e.key === 'ArrowLeft')   show(current - 1);
+    if (e.key === 'ArrowRight')  show(current + 1);
+  });
+})();
+</script>
 
 <!-- PRIVACY & OPEN SOURCE -->
 <section class="lp-privacy" id="privacy">

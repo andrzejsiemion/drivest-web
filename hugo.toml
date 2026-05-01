@@ -13,8 +13,6 @@ disableKinds = ["taxonomy", "term"]
 
   [params.label]
     text = "Drivest"
-    icon = "/images/logo.png"
-    iconHeight = 32
 
 [[menus.main]]
   name = "GitHub"

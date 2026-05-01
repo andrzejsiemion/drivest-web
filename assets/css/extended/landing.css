@@ -215,17 +215,40 @@
   box-shadow: 0 32px 80px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
+/* Nav logo — injected via CSS to avoid PaperMod's absURL issue */
+.logo a {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo a::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background: url('/images/logo.png') no-repeat center / contain;
+  flex-shrink: 0;
+}
+
 /* Logo: invert to white in dark mode (source image is dark on transparent) */
 [data-theme="dark"] .lp-hero-logo,
-[data-theme="dark"] .logo a img {
+[data-theme="dark"] .logo a::before {
   filter: brightness(0) invert(1);
 }
 
 /* Screenshot: show light variant by default, swap in dark mode */
 .lp-screen-dark { display: none; }
 
+/* Explicit dark toggle (PaperMod sets data-theme on <html>) */
 [data-theme="dark"] .lp-screen-light { display: none; }
 [data-theme="dark"] .lp-screen-dark  { display: block; }
+
+/* System dark mode when PaperMod is in auto and hasn't set data-theme */
+@media (prefers-color-scheme: dark) {
+  :not([data-theme="light"]) .lp-screen-light { display: none; }
+  :not([data-theme="light"]) .lp-screen-dark  { display: block; }
+}
 
 /* ===== FEATURES (adapts to theme) ===== */
 .lp-features {
@@ -282,9 +305,9 @@
   font-weight: 600;
 }
 
-/* ===== SCREENSHOTS (always dark) ===== */
+/* ===== SCREENSHOTS (adapts to theme) ===== */
 .lp-screenshots {
-  background: #13141a;
+  background: var(--entry);
   padding: 100px 0 0;
 }
 
@@ -306,11 +329,130 @@
 
 .lp-screenshot-iphone {
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
-  transition: transform 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .lp-screenshot-iphone:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-10px) scale(1.14);
+  box-shadow: 0 32px 72px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+/* ===== LIGHTBOX ===== */
+.lp-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.lp-lightbox--open {
+  display: flex;
+}
+
+.lp-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.lp-lightbox-img-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+}
+
+.lp-lightbox-img {
+  max-height: 88vh;
+  max-width: min(420px, 90vw);
+  border-radius: 36px;
+  box-shadow: 0 32px 100px rgba(0, 0, 0, 0.6);
+}
+
+.lp-lightbox-close {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.lp-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.lp-lightbox-arrow {
+  position: relative;
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  backdrop-filter: blur(4px);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.lp-lightbox-arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.08);
+}
+
+/* dots */
+.lp-lightbox-dots {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.lp-lb-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.30);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.lp-lb-dot--active {
+  background: #fff;
+  transform: scale(1.25);
+}
+
+/* layout: [prev] [image] [next] */
+.lp-lightbox {
+  gap: 20px;
 }
 
 /* ===== PRIVACY (adapts to theme) ===== */
