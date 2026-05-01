@@ -1,0 +1,213 @@
+{{ define "main" }}
+
+<!-- HERO -->
+<section class="lp-hero">
+  <div class="lp-hero-content">
+    <div class="lp-hero-text">
+      <img src="/images/logo.png" alt="Drivest" class="lp-hero-logo">
+      <h1 class="lp-hero-title">Know Every Kilometer.<br>Know Every Cost.</h1>
+      <p class="lp-hero-sub">Track fuel, maintenance, and running costs for all your vehicles — offline, private, free.</p>
+      <a href="{{ .Site.Params.appStoreURL }}" class="lp-appstore-btn">
+        <svg class="lp-apple-icon" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true">
+          <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-155.5-127.4C46 790.4 0 663.3 0 541.8c0-207 134.5-316.5 266.8-316.5 73.6 0 134.9 50.3 179.7 50.3 43.5 0 111.9-53.2 193.6-53.2zm-134 -209.1c33.2-40.8 57.2-98.1 57.2-155.5 0-8.1-.6-16.3-2-24.4-54.4 2-119.3 36.2-159.6 81.2-30.8 35.4-59.5 92.7-59.5 150.8 0 8.7 1.4 17.4 2 20.1 3.2.5 8.4 1.2 13.6 1.2 48.7 0 109.2-32.5 148.3-73.4z"/>
+        </svg>
+        Download on the App Store
+      </a>
+      <p class="lp-coming-soon">Coming soon to the App Store</p>
+    </div>
+    <div class="lp-hero-phone">
+      <div class="lp-iphone lp-hero-iphone">
+        <div class="lp-notch"></div>
+        <div class="lp-screen">
+          <img src="/images/simulator/screen-fuel-bright.png" alt="Drivest app" class="lp-screen-light" loading="eager">
+          <img src="/images/simulator/screen-fuel-dark.png" alt="Drivest app" class="lp-screen-dark" loading="eager">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="lp-features" id="features">
+  <div class="lp-container">
+    <h2 class="lp-section-title">Everything your car needs, in one place</h2>
+    <p class="lp-section-sub">Designed for drivers who care about their costs.</p>
+    <div class="lp-features-grid">
+
+      <div class="lp-feature-card">
+        <div class="lp-feature-icon">⛽</div>
+        <h3>Fuel Tracking</h3>
+        <p>Log every fill-up with price, volume, and odometer. Efficiency in L/100km is calculated automatically.</p>
+      </div>
+
+      <div class="lp-feature-card">
+        <div class="lp-feature-icon">🔧</div>
+        <h3>Cost Tracking</h3>
+        <p>Record any vehicle expense by category — insurance, tyres, service, parking, and more.</p>
+      </div>
+
+      <div class="lp-feature-card">
+        <div class="lp-feature-icon">⏰</div>
+        <h3>Smart Reminders</h3>
+        <p>Never miss an oil change or insurance renewal. Set time-based or distance-based reminders per vehicle.</p>
+      </div>
+
+      <div class="lp-feature-card">
+        <div class="lp-feature-icon">⚡</div>
+        <h3>EV & PHEV Support</h3>
+        <p>Track electricity bills and charging sessions. Efficiency shown in kWh/100km. Full PHEV dual-fuel support.</p>
+      </div>
+
+      <div class="lp-feature-card">
+        <div class="lp-feature-icon">🔗</div>
+        <h3>Connected Services</h3>
+        <p>Sync odometer readings automatically via official <strong>Volvo</strong> and <strong>Toyota</strong> APIs. No third-party accounts.</p>
+      </div>
+
+      <div class="lp-feature-card">
+        <div class="lp-feature-icon">📊</div>
+        <h3>Statistics</h3>
+        <p>Spending summaries with time filters, efficiency trends, and odometer progress charts over time.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="lp-screenshots" id="screenshots">
+  <div class="lp-container">
+    <h2 class="lp-section-title">See it in action</h2>
+    <p class="lp-section-sub">Clean, fast, and works entirely on your device.</p>
+  </div>
+  <div class="lp-scroll-wrap">
+    <div class="lp-scroll-track">
+      {{ $screens := slice
+          (dict "light" "/images/simulator/screen-fillup-bright.png" "dark" "/images/simulator/screen-fillup-dark.png" "show" "light" "alt" "Fill-up tracking")
+          (dict "light" "/images/simulator/screen-bill-bright.png"   "dark" "/images/simulator/screen-bill-dark.png"   "show" "dark"  "alt" "Billing")
+          (dict "light" "/images/simulator/screen-cost-bright.png"   "dark" "/images/simulator/screen-cost-dark.png"   "show" "light" "alt" "Cost tracking")
+          (dict "light" "/images/simulator/screen-stat-bright.png"   "dark" "/images/simulator/screen-stat-dark.png"   "show" "dark" "alt" "Statistics")
+      }}
+      {{ range $screens }}
+      {{ $src := cond (eq .show "dark") .dark .light }}
+      <div class="lp-iphone lp-screenshot-iphone" role="button" tabindex="0" aria-label="View {{ .alt }} screenshot"
+           data-src-light="{{ .light }}" data-src-dark="{{ .dark }}">
+        <div class="lp-notch"></div>
+        <div class="lp-screen">
+          <img src="{{ $src }}" alt="Drivest — {{ .alt }}" loading="lazy">
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lp-lightbox" id="lp-lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+  <div class="lp-lightbox-backdrop"></div>
+  <button class="lp-lightbox-close" aria-label="Close">&#x2715;</button>
+  <button class="lp-lightbox-arrow lp-lightbox-prev" aria-label="Previous screenshot">&#8249;</button>
+  <div class="lp-lightbox-img-wrap">
+    <img class="lp-lightbox-img lp-screen-light" id="lp-lightbox-img-light" src="" alt="Screenshot">
+    <img class="lp-lightbox-img lp-screen-dark"  id="lp-lightbox-img-dark"  src="" alt="Screenshot">
+  </div>
+  <button class="lp-lightbox-arrow lp-lightbox-next" aria-label="Next screenshot">&#8250;</button>
+  <div class="lp-lightbox-dots" id="lp-lightbox-dots"></div>
+</div>
+
+<script>
+(function () {
+  var lightbox    = document.getElementById('lp-lightbox');
+  var lbImgLight  = document.getElementById('lp-lightbox-img-light');
+  var lbImgDark   = document.getElementById('lp-lightbox-img-dark');
+  var dotsWrap    = document.getElementById('lp-lightbox-dots');
+  var phones      = Array.from(document.querySelectorAll('.lp-screenshot-iphone'));
+  var current     = 0;
+
+  /* build dot indicators */
+  phones.forEach(function (_, i) {
+    var d = document.createElement('span');
+    d.className = 'lp-lb-dot';
+    d.addEventListener('click', function () { show(i); });
+    dotsWrap.appendChild(d);
+  });
+
+  function updateDots() {
+    Array.from(dotsWrap.children).forEach(function (d, i) {
+      d.classList.toggle('lp-lb-dot--active', i === current);
+    });
+  }
+
+  function show(index) {
+    current = (index + phones.length) % phones.length;
+    var phone = phones[current];
+    var srcLight = phone.dataset.srcLight;
+    var srcDark  = phone.dataset.srcDark;
+    var alt      = phone.querySelector('.lp-screen img').alt;
+    lbImgLight.src = srcLight;
+    lbImgLight.alt = alt;
+    lbImgDark.src  = srcDark;
+    lbImgDark.alt  = alt;
+    updateDots();
+  }
+
+  function open(index) {
+    show(index);
+    lightbox.classList.add('lp-lightbox--open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lightbox.classList.remove('lp-lightbox--open');
+    document.body.style.overflow = '';
+  }
+
+  phones.forEach(function (phone, i) {
+    phone.addEventListener('click', function () { open(i); });
+    phone.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+    });
+  });
+
+  lightbox.querySelector('.lp-lightbox-backdrop').addEventListener('click', close);
+  lightbox.querySelector('.lp-lightbox-close').addEventListener('click', close);
+  lightbox.querySelector('.lp-lightbox-prev').addEventListener('click', function () { show(current - 1); });
+  lightbox.querySelector('.lp-lightbox-next').addEventListener('click', function () { show(current + 1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('lp-lightbox--open')) return;
+    if (e.key === 'Escape')      close();
+    if (e.key === 'ArrowLeft')   show(current - 1);
+    if (e.key === 'ArrowRight')  show(current + 1);
+  });
+})();
+</script>
+
+<!-- PRIVACY & OPEN SOURCE -->
+<section class="lp-privacy" id="privacy">
+  <div class="lp-container lp-privacy-inner">
+    <div class="lp-privacy-icons">
+      <span title="Offline">📵</span>
+      <span title="No account">🔒</span>
+      <span title="Open source">💚</span>
+    </div>
+    <h2>Private. Offline. Free.</h2>
+    <p>Your data stays on your device. No account, no subscription, no cloud sync required. Drivest is free and open source under the MIT license.</p>
+    <div class="lp-badges">
+      <span class="lp-badge">iOS 17+</span>
+      <span class="lp-badge">Offline-first</span>
+      <span class="lp-badge">No account</span>
+      <span class="lp-badge">Multi-currency</span>
+      <span class="lp-badge">English & Polish</span>
+      <span class="lp-badge">Dark Mode</span>
+    </div>
+    <a href="{{ .Site.Params.githubURL }}" class="lp-github-btn" target="_blank" rel="noopener">
+      <svg class="lp-gh-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      View Source on GitHub
+    </a>
+  </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,20 @@
+baseURL = "https://www.drivest.app/"
+languageCode = "en-us"
+title = "Drivest"
+theme = "PaperMod"
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  defaultTheme = "auto"
+  disableThemeToggle = false
+  description = "Track fuel, maintenance, and running costs for all your vehicles — offline, private, free."
+  appStoreURL = "#"
+  githubURL = "https://github.com/andrzejsiemion/drivest-ios"
+
+  [params.label]
+    text = "Drivest"
+
+[[menus.main]]
+  name = "GitHub"
+  url = "https://github.com/andrzejsiemion/drivest-ios"
+  weight = 10
