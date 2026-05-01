@@ -83,17 +83,16 @@
   <div class="lp-scroll-wrap">
     <div class="lp-scroll-track">
       {{ $screens := slice
-          (dict "dark" "/images/simulator/screen2.png" "light" "/images/simulator/screen1.png" "alt" "Fuel tracking")
-          (dict "dark" "/images/simulator/screen3.png" "light" "/images/simulator/screenL3.png" "alt" "Add vehicle")
-          (dict "dark" "/images/simulator/screen4.png" "light" "/images/simulator/screenL2.png" "alt" "Vehicle list")
-          (dict "dark" "/images/simulator/screen6.png" "light" "/images/simulator/screenL4.png" "alt" "Statistics")
+          (dict "src" "/images/simulator/screen2.png" "alt" "Fuel tracking")
+          (dict "src" "/images/simulator/screen3.png" "alt" "Add vehicle")
+          (dict "src" "/images/simulator/screen4.png" "alt" "Vehicle list")
+          (dict "src" "/images/simulator/screen6.png" "alt" "Statistics")
       }}
       {{ range $screens }}
       <div class="lp-iphone lp-screenshot-iphone" role="button" tabindex="0" aria-label="View {{ .alt }} screenshot">
         <div class="lp-notch"></div>
         <div class="lp-screen">
-          <img src="{{ .light }}" alt="Drivest — {{ .alt }}" class="lp-screen-light" loading="lazy">
-          <img src="{{ .dark }}"  alt="Drivest — {{ .alt }}" class="lp-screen-dark"  loading="lazy">
+          <img src="{{ .src }}" alt="Drivest — {{ .alt }}" loading="lazy">
         </div>
       </div>
       {{ end }}
@@ -139,12 +138,11 @@
 
   function show(index) {
     current = (index + phones.length) % phones.length;
-    var imgLight = phones[current].querySelector('.lp-screen .lp-screen-light');
-    var imgDark  = phones[current].querySelector('.lp-screen .lp-screen-dark');
-    lbImgLight.src = imgLight.src;
-    lbImgLight.alt = imgLight.alt;
-    lbImgDark.src  = imgDark.src;
-    lbImgDark.alt  = imgDark.alt;
+    var img = phones[current].querySelector('.lp-screen img');
+    lbImgLight.src = img.src;
+    lbImgLight.alt = img.alt;
+    lbImgDark.src  = img.src;
+    lbImgDark.alt  = img.alt;
     updateDots();
   }
 
