@@ -15,6 +15,14 @@ disableKinds = ["taxonomy", "term"]
     text = "Drivest"
 
 [[menus.main]]
+  name = "Docs"
+  url = "#"
+  weight = 5
+
+[[menus.main]]
   name = "GitHub"
   url = "https://github.com/andrzejsiemion/drivest-ios"
   weight = 10
+
+[params.footer]
+  hideCopyright = true
