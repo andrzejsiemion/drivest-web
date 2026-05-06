@@ -6,10 +6,6 @@
 :root {
   --lp-green: #3d8b5e;
   --lp-green-light: #4ea872;
-  --lp-phone-w: 220px;
-  --lp-phone-h: 450px;
-  --lp-phone-radius: 36px;
-  --lp-phone-border: 10px;
 }
 
 /* Break out of PaperMod's centered max-width */
@@ -46,42 +42,10 @@
 .lp-on-dark { color: rgba(255, 255, 255, 0.92) !important; }
 .lp-section-sub.lp-on-dark { color: rgba(255, 255, 255, 0.55) !important; }
 
-/* ===== iPhone FRAME ===== */
-.lp-iphone {
-  position: relative;
-  width: var(--lp-phone-w);
-  height: var(--lp-phone-h);
-  background: #1c1c1e;
-  border-radius: var(--lp-phone-radius);
-  border: var(--lp-phone-border) solid #2e2e32;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.lp-notch {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 88px;
-  height: 22px;
-  background: #1c1c1e;
-  border-radius: 0 0 18px 18px;
-  z-index: 10;
-}
-
-.lp-screen {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: calc(var(--lp-phone-radius) - var(--lp-phone-border));
-}
-
-.lp-screen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
+/* ===== HERO SCREENSHOT ===== */
+.lp-hero-screenshot {
+  width: 280px;
+  height: auto;
   display: block;
 }
 
@@ -205,16 +169,6 @@
   flex-shrink: 0;
 }
 
-.lp-hero-iphone {
-  --lp-phone-w: 240px;
-  --lp-phone-h: 490px;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25), 0 0 0 1px var(--border);
-}
-
-[data-theme="dark"] .lp-hero-iphone {
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-
 /* Nav logo — injected via CSS to avoid PaperMod's absURL issue */
 .logo a {
   display: flex !important;
@@ -238,16 +192,16 @@
 }
 
 /* Screenshot: show light variant by default, swap in dark mode */
-.lp-screen-dark { display: none; }
+.lp-screen-dark { display: none !important; }
 
 /* Explicit dark toggle (PaperMod sets data-theme on <html>) */
-[data-theme="dark"] .lp-screen-light { display: none; }
-[data-theme="dark"] .lp-screen-dark  { display: block; }
+[data-theme="dark"] .lp-screen-light { display: none !important; }
+[data-theme="dark"] .lp-screen-dark  { display: block !important; }
 
 /* System dark mode when PaperMod is in auto and hasn't set data-theme */
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) .lp-screen-light { display: none; }
-  html:not([data-theme="light"]) .lp-screen-dark  { display: block; }
+  html:not([data-theme="light"]) .lp-screen-light { display: none !important; }
+  html:not([data-theme="light"]) .lp-screen-dark  { display: block !important; }
 }
 
 /* ===== FEATURES (adapts to theme) ===== */
@@ -307,18 +261,8 @@
 
 /* ===== SCREENSHOTS (adapts to theme) ===== */
 .lp-screenshots {
-  background: var(--entry);
-  padding: 100px 0 0;
-}
-
-[data-theme="dark"] .lp-screenshots {
   background: var(--theme);
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) .lp-screenshots {
-    background: var(--theme);
-  }
+  padding: 100px 0 0;
 }
 
 .lp-scroll-wrap {
@@ -339,17 +283,23 @@
   justify-content: center;
 }
 
-.lp-screenshot-iphone {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.lp-screenshot-card {
+  flex-shrink: 0;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.lp-screenshot-iphone:hover {
-  transform: translateY(-10px) scale(1.14);
-  box-shadow: 0 32px 72px rgba(0, 0, 0, 0.7);
+.lp-screenshot-card img {
+  width: auto;
+  height: 420px;
+  display: block;
+}
+
+.lp-screenshot-card:hover {
+  transform: translateY(-10px) scale(1.04);
   z-index: 2;
 }
+
 
 /* ===== LIGHTBOX ===== */
 .lp-lightbox {
@@ -382,8 +332,6 @@
 .lp-lightbox-img {
   max-height: 88vh;
   max-width: min(420px, 90vw);
-  border-radius: 36px;
-  box-shadow: 0 32px 100px rgba(0, 0, 0, 0.6);
 }
 
 .lp-lightbox-close {
@@ -585,9 +533,8 @@
     margin-right: auto;
   }
 
-  .lp-hero-iphone {
-    --lp-phone-w: 200px;
-    --lp-phone-h: 410px;
+  .lp-hero-screenshot {
+    width: 200px;
   }
 
   .lp-features-grid {
@@ -620,10 +567,12 @@
 }
 
 @media (max-width: 480px) {
-  .lp-hero-iphone {
-    --lp-phone-w: 180px;
-    --lp-phone-h: 370px;
-    --lp-phone-radius: 28px;
+  .lp-hero-screenshot {
+    width: 180px;
+  }
+
+  .lp-screenshot-card img {
+    height: 340px;
   }
 }
 

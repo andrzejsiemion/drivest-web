@@ -16,13 +16,8 @@
       <p class="lp-coming-soon">Coming soon to the App Store</p>
     </div>
     <div class="lp-hero-phone">
-      <div class="lp-iphone lp-hero-iphone">
-        <div class="lp-notch"></div>
-        <div class="lp-screen">
-          <img src="/images/simulator/screen-fuel-bright.png" alt="Drivest app" class="lp-screen-light" loading="eager">
-          <img src="/images/simulator/screen-fuel-dark.png" alt="Drivest app" class="lp-screen-dark" loading="eager">
-        </div>
-      </div>
+      <img src="/images/appstore/light.png" alt="Drivest app" class="lp-hero-screenshot lp-screen-light" loading="eager">
+      <img src="/images/appstore/dark.png" alt="Drivest app" class="lp-hero-screenshot lp-screen-dark" loading="eager">
     </div>
   </div>
 </section>
@@ -83,19 +78,16 @@
   <div class="lp-scroll-wrap">
     <div class="lp-scroll-track">
       {{ $screens := slice
-          (dict "light" "/images/simulator/screen-fillup-bright.png" "dark" "/images/simulator/screen-fillup-dark.png" "show" "light" "alt" "Fill-up tracking")
-          (dict "light" "/images/simulator/screen-bill-bright.png"   "dark" "/images/simulator/screen-bill-dark.png"   "show" "dark"  "alt" "Billing")
-          (dict "light" "/images/simulator/screen-cost-bright.png"   "dark" "/images/simulator/screen-cost-dark.png"   "show" "light" "alt" "Cost tracking")
-          (dict "light" "/images/simulator/screen-stat-bright.png"   "dark" "/images/simulator/screen-stat-dark.png"   "show" "dark" "alt" "Statistics")
+          (dict "light" "/images/appstore/fillup-light.png" "dark" "/images/appstore/fillup-dark.png" "alt" "Fill-up tracking")
+          (dict "light" "/images/appstore/bill-light.png"   "dark" "/images/appstore/bill-dark.png"   "alt" "Receipt scanning")
+          (dict "light" "/images/appstore/cost-light.png"   "dark" "/images/appstore/cost-dark.png"   "alt" "Cost tracking")
+          (dict "light" "/images/appstore/stat-light.png"   "dark" "/images/appstore/stat-dark.png"   "alt" "Statistics")
       }}
       {{ range $screens }}
-      {{ $src := cond (eq .show "dark") .dark .light }}
-      <div class="lp-iphone lp-screenshot-iphone" role="button" tabindex="0" aria-label="View {{ .alt }} screenshot"
+      <div class="lp-screenshot-card" role="button" tabindex="0" aria-label="View {{ .alt }} screenshot"
            data-src-light="{{ .light }}" data-src-dark="{{ .dark }}">
-        <div class="lp-notch"></div>
-        <div class="lp-screen">
-          <img src="{{ $src }}" alt="Drivest — {{ .alt }}" loading="lazy">
-        </div>
+        <img src="{{ .light }}" alt="Drivest — {{ .alt }}" class="lp-screen-light" loading="lazy">
+        <img src="{{ .dark }}" alt="Drivest — {{ .alt }}" class="lp-screen-dark" loading="lazy">
       </div>
       {{ end }}
     </div>
@@ -109,7 +101,7 @@
   <button class="lp-lightbox-arrow lp-lightbox-prev" aria-label="Previous screenshot">&#8249;</button>
   <div class="lp-lightbox-img-wrap">
     <img class="lp-lightbox-img lp-screen-light" id="lp-lightbox-img-light" src="" alt="Screenshot">
-    <img class="lp-lightbox-img lp-screen-dark"  id="lp-lightbox-img-dark"  src="" alt="Screenshot">
+    <img class="lp-lightbox-img lp-screen-dark" id="lp-lightbox-img-dark" src="" alt="Screenshot">
   </div>
   <button class="lp-lightbox-arrow lp-lightbox-next" aria-label="Next screenshot">&#8250;</button>
   <div class="lp-lightbox-dots" id="lp-lightbox-dots"></div>
@@ -121,11 +113,10 @@
   var lbImgLight  = document.getElementById('lp-lightbox-img-light');
   var lbImgDark   = document.getElementById('lp-lightbox-img-dark');
   var dotsWrap    = document.getElementById('lp-lightbox-dots');
-  var phones      = Array.from(document.querySelectorAll('.lp-screenshot-iphone'));
+  var cards       = Array.from(document.querySelectorAll('.lp-screenshot-card'));
   var current     = 0;
 
-  /* build dot indicators */
-  phones.forEach(function (_, i) {
+  cards.forEach(function (_, i) {
     var d = document.createElement('span');
     d.className = 'lp-lb-dot';
     d.addEventListener('click', function () { show(i); });
@@ -139,14 +130,12 @@
   }
 
   function show(index) {
-    current = (index + phones.length) % phones.length;
-    var phone = phones[current];
-    var srcLight = phone.dataset.srcLight;
-    var srcDark  = phone.dataset.srcDark;
-    var alt      = phone.querySelector('.lp-screen img').alt;
-    lbImgLight.src = srcLight;
+    current = (index + cards.length) % cards.length;
+    var card = cards[current];
+    var alt  = card.querySelector('img').alt;
+    lbImgLight.src = card.dataset.srcLight;
     lbImgLight.alt = alt;
-    lbImgDark.src  = srcDark;
+    lbImgDark.src  = card.dataset.srcDark;
     lbImgDark.alt  = alt;
     updateDots();
   }
@@ -162,9 +151,9 @@
     document.body.style.overflow = '';
   }
 
-  phones.forEach(function (phone, i) {
-    phone.addEventListener('click', function () { open(i); });
-    phone.addEventListener('keydown', function (e) {
+  cards.forEach(function (card, i) {
+    card.addEventListener('click', function () { open(i); });
+    card.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
     });
   });
