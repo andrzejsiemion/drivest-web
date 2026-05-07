@@ -16,7 +16,7 @@ disableKinds = ["taxonomy", "term"]
 
 [[menus.main]]
   name = "Docs"
-  url = "#"
+  url = "/docs/"
   weight = 5
 
 [[menus.main]]

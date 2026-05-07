@@ -834,3 +834,131 @@
     text-align: center;
   }
 }
+
+/* ===== DOCS LAYOUT ===== */
+.lp-docs-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.lp-docs-layout .lp-docs-content {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lp-docs-nav {
+  position: sticky;
+  top: 80px;
+  padding-top: 8px;
+}
+
+.lp-docs-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lp-docs-nav li {
+  margin-bottom: 2px;
+}
+
+.lp-docs-nav a {
+  display: block;
+  padding: 7px 12px;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.lp-docs-nav a:hover {
+  background: var(--entry);
+  color: var(--primary);
+}
+
+.lp-docs-nav-active a {
+  background: var(--entry);
+  color: var(--lp-green);
+  font-weight: 600;
+}
+
+/* Docs screenshot phone frame */
+.lp-docs-content img[src$=".png"]:not([src*="logo"]) {
+  display: block;
+  max-width: 260px;
+  height: auto;
+  margin: 32px auto 40px;
+  border-radius: 40px;
+  border: 8px solid #1a1a1a;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.08),
+    0 20px 60px rgba(0, 0, 0, 0.18),
+    0 8px 24px rgba(0, 0, 0, 0.10);
+  background: #000;
+  outline: 2px solid rgba(0, 0, 0, 0.06);
+  outline-offset: 0;
+}
+
+[data-theme="dark"] .lp-docs-content img[src$=".png"]:not([src*="logo"]) {
+  border-color: #3a3a3a;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.05),
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+  outline-color: rgba(255, 255, 255, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .lp-docs-content img[src$=".png"]:not([src*="logo"]) {
+    border-color: #3a3a3a;
+    box-shadow:
+      0 0 0 2px rgba(255, 255, 255, 0.05),
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      0 8px 24px rgba(0, 0, 0, 0.3);
+    outline-color: rgba(255, 255, 255, 0.06);
+  }
+}
+
+@media (max-width: 768px) {
+  .lp-docs-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 20px;
+  }
+
+  .lp-docs-nav {
+    position: static;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+
+  .lp-docs-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .lp-docs-nav li {
+    margin-bottom: 0;
+  }
+
+  .lp-docs-nav a {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .lp-docs-content img[src$=".png"]:not([src*="logo"]) {
+    max-width: 220px;
+    border-width: 6px;
+    border-radius: 32px;
+    margin: 24px auto 32px;
+  }
+}
