@@ -1,0 +1,29 @@
+{{ define "main" }}
+
+<section class="lp-policy-header">
+  <div class="lp-policy-header-inner">
+    <img src="/images/logo.png" alt="Drivest" class="lp-policy-logo">
+    <h1>{{ .Title }}</h1>
+  </div>
+</section>
+
+<section class="lp-policy-body">
+  <div class="lp-docs-layout">
+    <nav class="lp-docs-nav">
+      <ul>
+        {{ $currentPage := . }}
+        {{ range .Parent.Pages.ByWeight }}
+        <li{{ if eq . $currentPage }} class="lp-docs-nav-active"{{ end }}>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+    <div class="lp-policy-content lp-docs-content">
+      <a href="/docs/" class="lp-policy-back">&#8592; All Documentation</a>
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+{{ end }}
