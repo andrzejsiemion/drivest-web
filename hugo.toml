@@ -8,13 +8,21 @@ disableKinds = ["taxonomy", "term"]
   defaultTheme = "auto"
   disableThemeToggle = false
   description = "Track fuel, maintenance, and running costs for all your vehicles — offline, private, free."
-  appStoreURL = "#"
+  appStoreURL = "https://apps.apple.com/app/drivest-app/id6765852658"
   githubURL = "https://github.com/andrzejsiemion/drivest-ios"
 
   [params.label]
     text = "Drivest"
 
 [[menus.main]]
+  name = "Docs"
+  url = "/docs/"
+  weight = 5
+
+[[menus.main]]
   name = "GitHub"
   url = "https://github.com/andrzejsiemion/drivest-ios"
   weight = 10
+
+[params.footer]
+  hideCopyright = true
