@@ -16,7 +16,7 @@ The chart at the top shows your odometer readings and spending history. You can 
 Use the period selector to filter the chart by time range.
 
 <!-- SCREENSHOT: Statistics chart — the Statistics tab showing the odometer chart at the top with data points connected by a line, period selector buttons below it, and the spending summary section underneath. -->
-![Statistics chart](/images/docs/statistics-chart.png)
+![Statistics chart](/images/docs/1.0/statistics-chart.png)
 
 ## Spending Summary
 
@@ -30,7 +30,7 @@ Below the chart, a summary section shows key metrics for the selected period:
 If you have a default currency set, amounts are displayed in that currency. Fill-ups recorded in other currencies are converted using the exchange rate at the time of the fill-up.
 
 <!-- SCREENSHOT: Spending summary — the summary section of the Statistics tab showing labeled rows for Total Spent, Total Fuel, Fill-Ups count, and Avg Efficiency with actual values. -->
-![Spending summary](/images/docs/statistics-summary.png)
+![Spending summary](/images/docs/1.0/statistics-summary.png)
 
 ## Switching Vehicles
 

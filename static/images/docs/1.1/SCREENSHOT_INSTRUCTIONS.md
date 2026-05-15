@@ -1,6 +1,12 @@
-# How to Capture Documentation Screenshots
+# How to Capture Documentation Screenshots — v1.1
 
-Step-by-step instructions for reproducing each screenshot using the iOS Simulator.
+Step-by-step instructions for reproducing each screenshot for **app version 1.1** using the iOS Simulator.
+
+## Folder convention
+
+Save the resulting PNGs in `static/images/docs/1.1/` using the exact filenames listed in `SCREENSHOTS.md`. The docs pages reference them as `/images/docs/1.1/<filename>.png`.
+
+When a future app release ships meaningful UI changes, create the next version folder (e.g. `static/images/docs/1.2/`), copy this file in as a starting point, re-capture only the screenshots that changed, and update `content/docs/*.md` to point at the new prefix.
 
 ## General Setup
 
@@ -61,7 +67,7 @@ xcrun simctl spawn $DEVICE defaults write pro.siemion.drivest <KEY> <VALUE>
    - Different volumes (35–50 L) and prices.
    - Toggle "Full Tank" on for most so efficiency badges appear.
 3. Go to the **Fuel** tab.
-4. Screenshot with the vehicle picker card at top and the fill-up list below. The tab bar at bottom should show Fuel, Costs, Statistics.
+4. Screenshot with the vehicle picker card at top and the fill-up list below. The tab bar at bottom should show Fuel, Costs, Data.
 
 ---
 
@@ -88,6 +94,36 @@ xcrun simctl spawn $DEVICE defaults write pro.siemion.drivest <KEY> <VALUE>
    - Total Cost should auto-calculate to `274.85`.
    - Toggle **Full Tank** on.
 3. Screenshot the form.
+
+---
+
+### fuel-tracking-location.png
+
+**What to show:** Either the iOS "While Using" location permission prompt on top of the fill-up form, or a saved fill-up's detail page with a map preview showing the captured fuel-stop location.
+
+**Option A — Permission prompt (recommended):**
+
+1. Reset the simulator's location permissions:
+   ```bash
+   xcrun simctl privacy booted reset location pro.siemion.drivest
+   ```
+2. Launch the app on a vehicle with no prior fill-ups so the first save triggers the prompt.
+3. From the Fuel tab, tap **+**, fill in basic values, tap **Save**.
+4. The iOS system prompt asks for "While Using" location — screenshot at that moment.
+
+**Option B — Detail page with map preview:**
+
+1. Grant "While Using" location permission for Drivest.
+2. Set a custom simulator location: in the Simulator menu, **Features > Location > Custom Location...** (use a recognisable place, e.g. a city centre).
+3. Add a fill-up. After saving, open the fill-up detail page.
+4. Screenshot showing the small map preview with a pin at the captured location.
+
+**Option C — Add-screen Location row (covers the new manual-adjust UX):**
+
+1. Grant "While Using" location permission and set a custom simulator location as in Option B.
+2. From the Fuel tab, tap **+**. Scroll the form until the **Location** row is in view; it shows the current GPS fix with a pin icon on the trailing edge.
+3. To capture the long-press affordance: long-press the row — a map sheet opens with a draggable pin. Screenshot the map sheet (this version is the most informative).
+4. Alternatively, screenshot the Location row itself with the pin icon visible, since `Adjust on the Add screen` is now documented.
 
 ---
 
@@ -155,18 +191,20 @@ xcrun simctl spawn $DEVICE defaults write pro.siemion.drivest <KEY> <VALUE>
 
 ---
 
-### cost-tracking-categories.png
+### cost-tracking-categories-a.png
 
-**What to show:** Categories management and the "New Category" sheet.
+**What to show:** The Categories management list.
 
-This requires two screenshots composited, or take them separately:
-
-**Screenshot A — Category list:**
 1. Go to **Settings > Categories**.
 2. Screenshot the list of categories with their icons.
 
-**Screenshot B — Add Category sheet:**
-1. Tap **+** in the Categories screen.
+---
+
+### cost-tracking-categories-b.png
+
+**What to show:** The "New Category" sheet with name and icon grid.
+
+1. From **Settings > Categories**, tap **+**.
 2. Type a name (e.g. `Accessories`).
 3. Select an icon from the grid (e.g. the star icon).
 4. Screenshot the sheet with the name and icon grid visible.
@@ -243,25 +281,100 @@ This requires two screenshots composited, or take them separately:
 
 ---
 
-### statistics-chart.png
+### data-snapshot.png
 
-**What to show:** The Statistics tab with a chart and summary data.
+**What to show:** The top of the Data tab with the vehicle snapshot card.
 
-1. Use a vehicle with 5+ fill-ups spread over several months.
-2. Go to the **Statistics** tab.
-3. The chart should show data points. Select a meaningful period.
-4. Screenshot the full tab — chart at top, summary section below.
+1. Use a vehicle with at least 2 fill-ups (so the trend arrows can compare against a previous value).
+2. Go to the **Data** tab.
+3. Screenshot showing, in order: the vehicle picker at the top, the snapshot card with three rows (**Average consumption**, **Last consumption**, **Last price** — each with a trend arrow icon on the left and the value on the right), and the **Stats / Charts / Map - Fill-ups** list below.
 
 ---
 
-### statistics-summary.png
+### data-snapshot-hybrid.png
 
-**What to show:** Close-up of the spending summary section.
+**What to show:** Two snapshot cards stacked (Fuel + EV) for a plug-in hybrid.
 
-1. Same vehicle as above.
-2. Go to **Statistics** tab.
-3. Scroll so the summary rows (Total Spent, Total Fuel, Fill-Ups, Avg Efficiency) are fully visible.
-4. Screenshot focusing on the summary section.
+1. Create a vehicle with primary fuel type **Diesel** (or PB95) and configure a **second tank** with fuel type **EV**.
+2. Add a couple of fill-ups to the fuel tank and one or two electricity bills for the EV component.
+3. Go to the **Data** tab.
+4. Screenshot showing two snapshot cards stacked vertically: one under a **Fuel** header (with fuel metrics) and one under an **EV** header (with kWh/100km and per-kWh price).
+
+---
+
+### data-stats.png
+
+**What to show:** The Stats detail page with the three period sections.
+
+1. Use a vehicle with 5+ fill-ups spread across the last several months and at least one fill-up older than 30 days.
+2. Go to the **Data** tab, tap **Stats**.
+3. Screenshot showing the three sections — **Last Month**, **Last Year**, **All Time** — each with rows for Total Spent, Total Fuel, Fill-Ups, and Avg Efficiency.
+
+---
+
+### data-charts.png
+
+**What to show:** The Charts detail page with a chart, the chart-type selector, the period selector, and the summary.
+
+1. Same vehicle as above (5+ fill-ups across several months).
+2. Go to the **Data** tab, tap **Charts**.
+3. Make sure the chart-type selector shows the four options (**Mileage / Efficiency / Fuel Price / Cost/km**); the default selection is fine.
+4. Make sure the period selector shows all six options (**All / YTD / Prev Y / This M / Prev M / Custom**) and pick one that contains data (e.g. **All** or **YTD**).
+5. Screenshot showing the line chart at top, the chart-type selector and the period selector below it, and the summary section (Total Spent / Total Fuel / Fill-Ups / Avg Efficiency) at the bottom.
+
+---
+
+### data-map.png
+
+**What to show:** The Map - Fill-ups full-screen map with several pins.
+
+1. Grant **"While Using"** location permission for Drivest (see [fuel-tracking-location.png](#fuel-tracking-locationpng)).
+2. Add at least 4–5 fill-ups, each from a different simulator location:
+   - In the Simulator: **Features > Location > Custom Location...** — set a coordinate (e.g. Warsaw `52.2297, 21.0122`), save the fill-up, then change the simulator location and add the next one.
+   - Use a small spread of nearby cities so all pins fit a regional zoom.
+3. Go to the **Data** tab, tap **Map - Fill-ups**.
+4. Screenshot the full-screen map with the round accent-coloured pins visible.
+
+> Tip: If you don't have time to vary the simulator location between fill-ups, you can also set each fill-up's location manually from its detail page after saving — the same map view will populate.
+
+---
+
+### data-map-cluster.png
+
+**What to show:** The Map - Fill-ups screen with at least one cluster badge visible (a count circle that represents several overlapping pins).
+
+1. Same setup as `data-map.png` — make sure there are fill-ups at several different coordinates, including two or three that sit close to each other (e.g. three fill-ups within the same neighbourhood and two more in nearby cities).
+2. Open **Data > Map - Fill-ups**.
+3. Pinch out (zoom out) until the close-together fill-ups merge into a cluster badge showing the count (e.g. "3"). Keep enough single pins visible so the difference between a pin and a cluster badge is obvious.
+4. Screenshot.
+
+> Tip: If clustering doesn't kick in, zoom out further or move two fill-up coordinates closer together.
+
+---
+
+### data-map-detail.png
+
+**What to show:** The Map - Fill-ups screen with the read-only detail sheet expanded after tapping a single pin.
+
+1. Same setup as `data-map.png`. Use a fill-up that has all the interesting fields set: date, fuel type, odometer, volume, price per litre, total cost.
+2. Open **Data > Map - Fill-ups**.
+3. Tap a single pin (not a cluster). The detail sheet slides up from the bottom.
+4. Screenshot with the sheet expanded and the map still partially visible above it.
+
+---
+
+### ev-snapshot-history.png
+
+**What to show:** The EV period detail screen with the snapshot history list, including the three badge styles (Scheduled / Manual / Failed).
+
+1. Create or use an EV vehicle (Make: Volvo or Toyota, valid VIN, refresh token stored in Keychain — see `connected-services-odometer-fetch.png` for the dummy-token setup).
+2. Add at least one electricity bill so there's a period to drill into.
+3. Trigger a mix of snapshots so the history has all three badge styles:
+   - **Manual** — open a fill-up and tap the odometer fetch button.
+   - **Scheduled** — run the Drivest **Fetch Odometer** Shortcuts action.
+   - **Failed** — either let one of the calls above fail naturally (with a dummy token it will), or briefly disconnect the Mac's internet before triggering a fetch. For the most informative subtitle, stage the "Keychain locked — device must be unlocked at least once after boot" variant: reboot the device, leave it locked, fire a scheduled Shortcuts fetch, then unlock and screenshot.
+4. Open the **EV** tab, tap the in-progress period card, scroll to the **Snapshot History** list.
+5. Screenshot the list showing rows with their odometer + state-of-charge values and a visible mix of badges. The failed row's subtitle should be readable.
 
 ---
 
@@ -301,6 +414,24 @@ This requires two screenshots composited, or take them separately:
 4. The circular download button (arrow.down.circle) should appear next to the odometer field.
 5. Screenshot the odometer row with the fetch button visible.
 6. **Remove the debug line after capturing.**
+
+---
+
+### connected-services-snapshot-history.png
+
+**What to show:** The Snapshot History list with a mix of Scheduled / Manual / Failed badges.
+
+1. Use the same vehicle as for `connected-services-odometer-fetch.png` (Make: Volvo, VIN set, dummy token stored — see that section).
+2. Trigger a few snapshots so the history has at least three rows:
+   - One **Manual** snapshot — open a fill-up and tap the odometer fetch button. (With the dummy token, the call will fail and the row will be inserted as **Failed**; that's fine — the badge style is still what we want to show.)
+   - One **Scheduled** snapshot — run the Drivest **Fetch Odometer** Shortcuts action via the Shortcuts app (the Shortcut needs to be created once; see the [Apple Shortcuts Integration](../../content/docs/connected-services.md#apple-shortcuts-integration) section in the docs). The resulting row gets a grey **Scheduled** badge.
+   - One **Failed** row will already be present from the manual attempt above; otherwise force one by temporarily disabling the Mac's internet before tapping the fetch button.
+3. Open the vehicle detail screen and tap **Snapshots** (or the equivalent navigation row to **Snapshot History**).
+4. Screenshot the list showing the rows with their badges and (for the failed row) the subtitle error message and the preserved previous odometer.
+
+> Tip: The most illustrative failure subtitle is the *"Keychain locked — device must be unlocked at least once after boot"* variant. To stage it on a real device: lock the device, reboot it, leave it locked, and trigger a scheduled fetch (e.g. via a time-based Shortcuts automation). The next time you unlock and open the app, that failure row is visible at the top of the Snapshot History.
+
+> Tip: If creating a real Scheduled row is awkward, you can also insert a snapshot directly into the SwiftData store via a debug build. For documentation purposes the key thing is that each badge style (grey "Scheduled", accent "Manual", red "Failed") appears in the screenshot.
 
 ---
 
@@ -375,6 +506,8 @@ Each tab has an empty state view when there is no data. To capture:
 2. Go to each tab — the empty state with an icon and message appears.
 3. Screenshot as needed.
 
+The **Map - Fill-ups** empty state (no fill-ups with GPS data yet) is worth capturing for the Data page too — it shows a hint about enabling location permission.
+
 ### Dark Mode
 
 To switch the Simulator to dark mode:
@@ -389,6 +522,14 @@ To capture the Polish version:
 - In Xcode: Product > Scheme > Edit Scheme > Run > Options > App Language > Polish.
 - Rebuild and re-run in the Simulator.
 
+### Custom Simulator Location
+
+Several screenshots (the location prompt, the fill-up detail map preview, the Map - Fill-ups screen) benefit from a non-default simulator location:
+
+- In the Simulator menu: **Features > Location > Custom Location...** and enter latitude/longitude.
+- For the Map screen, change this between fill-ups so the pins spread out across a recognisable area.
+- Reset with **Features > Location > None** when finished.
+
 ---
 
 ## Tips
@@ -397,4 +538,4 @@ To capture the Polish version:
 - **Realistic values:** Use plausible fuel prices (e.g. 6.49 PLN/L for diesel), volumes (35–50 L), and odometer readings.
 - **Clean status bar:** The Simulator shows a clean status bar (9:41, full battery, full signal) by default.
 - **Hide keyboard:** Tap away from text fields before taking screenshots to hide the keyboard, unless the keyboard is relevant.
-- **File naming:** Save screenshots with the exact filenames listed in `SCREENSHOTS.md` and place them in this directory (`static/images/docs/`).
+- **File naming:** Save screenshots with the exact filenames listed in `SCREENSHOTS.md` and place them in this directory (`static/images/docs/1.1/`).

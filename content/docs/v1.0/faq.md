@@ -58,16 +58,6 @@ Distance-based reminders check the latest odometer reading each time you log a f
 
 The reminder advances by its recurrence interval. For date-based reminders, the due date moves forward by the specified number of days (default: 365). For distance-based reminders, the target odometer increases by the specified distance.
 
-## EV / Electricity Bills
-
-### Why didn't the Odometer field prefill when I picked a date?
-
-Prefill only happens when a connected-service snapshot exists for the **exact calendar day** you selected. If the nearest snapshot is from a different day, the field stays empty so you can enter the reading yourself. See [EV Features → Odometer prefill](../ev-features/#odometer-prefill).
-
-### Are Start and End odometers required?
-
-No. They're optional. If you fill both in, the app uses them directly to compute distance and **kWh / 100 km**. If you leave either empty, the bill falls back to automatic snapshot reconciliation against the previous bill.
-
 ## Connected Services
 
 ### Why can't I see the odometer fetch button?
@@ -80,12 +70,6 @@ The fetch button only appears when:
 ### Can I use Drivest without connecting to a vehicle service?
 
 Absolutely. Connected services are entirely optional. You can enter all data manually.
-
-### What does a red "Failed" badge in Snapshot History mean?
-
-It means a fetch attempt (from a Shortcut or background refresh) recorded a snapshot row but no new odometer reading was retrieved. The row's subtitle carries the underlying reason — most often a rate limit or transient network/server error from the manufacturer's API. The app retries automatically before marking a snapshot as failed, and the row preserves the previous known odometer so the entry isn't blank. The next successful fetch records a fresh reading.
-
-If you see *"Keychain locked — device must be unlocked at least once after boot"*, a scheduled fetch ran while the device was still locked from a reboot. Unlock the phone once and the next fetch will succeed; no action needed in the app. See [Connected Services → Reliability](../connected-services/#reliability) for details.
 
 ## Backup
 

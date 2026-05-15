@@ -1,5 +1,8 @@
 {{ define "main" }}
 
+{{ $isArchive := strings.HasPrefix .RelPermalink "/docs/v1.0/" }}
+{{ $parentURL := cond $isArchive "/docs/v1.0/" "/docs/" }}
+
 <section class="lp-policy-header">
   <div class="lp-policy-header-inner">
     <img src="/images/logo.png" alt="Drivest" class="lp-policy-logo">
@@ -10,9 +13,18 @@
 <section class="lp-policy-body">
   <div class="lp-docs-layout">
     <nav class="lp-docs-nav">
+      <div class="lp-docs-version">
+        <label class="lp-docs-version-label" for="lp-docs-version-select">Version</label>
+        <div class="lp-docs-version-select-wrap">
+          <select id="lp-docs-version-select" class="lp-docs-version-select" onchange="if(this.value)location.href=this.value;">
+            <option value="/docs/"{{ if not $isArchive }} selected{{ end }}>v1.1 (latest)</option>
+            <option value="/docs/v1.0/"{{ if $isArchive }} selected{{ end }}>v1.0</option>
+          </select>
+        </div>
+      </div>
       <ul>
         {{ $currentPage := . }}
-        {{ range .Parent.Pages.ByWeight }}
+        {{ range .Parent.RegularPages.ByWeight }}
         <li{{ if eq . $currentPage }} class="lp-docs-nav-active"{{ end }}>
           <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </li>
@@ -20,7 +32,12 @@
       </ul>
     </nav>
     <div class="lp-policy-content lp-docs-content">
-      <a href="/docs/" class="lp-policy-back">&#8592; All Documentation</a>
+      <a href="{{ $parentURL }}" class="lp-policy-back">&#8592; All Documentation{{ if $isArchive }} (v1.0){{ end }}</a>
+      {{ if $isArchive }}
+      <div class="lp-docs-archive-notice">
+        You're viewing the docs for <strong>Drivest v1.0</strong>. <a href="/docs/">View the latest documentation</a>.
+      </div>
+      {{ end }}
       {{ .Content }}
     </div>
   </div>

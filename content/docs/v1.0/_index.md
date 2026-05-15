@@ -1,9 +1,9 @@
 ---
-title: "Documentation"
-description: "Drivest user documentation — learn how to track your vehicle costs"
+title: "Documentation (v1.0)"
+description: "Drivest user documentation for app version 1.0"
 ---
 
-Drivest is a vehicle cost and fuel tracking app for iOS. All your data stays on your device — no accounts, no servers, no tracking.
+This is the documentation for **Drivest v1.0**. For the latest documentation, see [the current docs](/docs/).
 
 ## Guides
 
@@ -12,7 +12,7 @@ Drivest is a vehicle cost and fuel tracking app for iOS. All your data stays on 
 - [Cost Tracking](cost-tracking/) — Recording expenses by category
 - [Reminders](reminders/) — Date-based and distance-based reminders
 - [EV Features](ev-features/) — Electricity bills, EV tracking
-- [Data](data/) — Vehicle snapshot card, stats, charts, fill-up map
+- [Statistics](statistics/) — Spending summaries, odometer charts
 - [Currency](currency/) — Default currency, additional currencies, exchange rates
 - [Connected Services](connected-services/) — Vehicle manufacturer integrations, Shortcuts
 - [Backup & Restore](backup-and-restore/) — Export and import your data

@@ -8,12 +8,12 @@ Drivest supports multiple currencies, which is useful if you travel across borde
 
 ## Default Currency
 
-Your default currency is used for stats and summaries.
+Your default currency is used for statistics and summaries.
 
 1. Go to **Settings > Currency**.
 2. Select your default currency from the list.
 
-All amounts on the Data tab are shown in your default currency.
+All amounts in the Statistics tab are shown in your default currency.
 
 ## Additional Currencies
 
@@ -26,7 +26,7 @@ You can add extra currencies to use when logging fill-ups or costs in a foreign 
 When you add a fill-up or cost, a currency selector appears next to the price fields if you have more than one currency configured.
 
 <!-- SCREENSHOT: Currency settings — the Currency settings screen showing the default currency picker at the top (e.g. "PLN"), the additional currencies section below with one or two currencies listed (e.g. "EUR" with rate "4.3000" and last updated date), and the "Add Currency" and "Refresh Rates Now" buttons. -->
-![Currency settings](/images/docs/1.1/currency-settings.png)
+![Currency settings](/images/docs/1.0/currency-settings.png)
 
 ## Exchange Rates
 
@@ -49,7 +49,7 @@ You can override any exchange rate manually:
 
 Rates are expressed as: **1 [additional currency] = X [default currency]**.
 
-For example, if your default currency is PLN and you add EUR with a rate of 4.30, it means 1 EUR = 4.30 PLN. When you log a fill-up for 50 EUR, the app records it as approximately 215 PLN in your stats and charts.
+For example, if your default currency is PLN and you add EUR with a rate of 4.30, it means 1 EUR = 4.30 PLN. When you log a fill-up for 50 EUR, the app records it as approximately 215 PLN in your statistics.
 
 ## Removing a Currency
 

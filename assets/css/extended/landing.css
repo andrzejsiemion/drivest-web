@@ -889,12 +889,103 @@
   font-weight: 600;
 }
 
-/* Docs screenshot phone frame */
+/* Version switcher in docs nav */
+.lp-docs-version {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.lp-docs-version-label {
+  color: var(--secondary);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.lp-docs-version-select-wrap {
+  position: relative;
+}
+
+.lp-docs-version-select-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--secondary);
+  border-bottom: 2px solid var(--secondary);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.lp-docs-version-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--lp-green);
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.lp-docs-version-select:hover {
+  border-color: var(--lp-green);
+}
+
+.lp-docs-version-select:focus {
+  outline: none;
+  border-color: var(--lp-green);
+  box-shadow: 0 0 0 2px rgba(64, 160, 80, 0.2);
+}
+
+.lp-docs-version-select option {
+  color: var(--primary);
+  background: var(--theme);
+  font-weight: 500;
+}
+
+/* Archive notice on older versions */
+.lp-docs-archive-notice {
+  padding: 12px 16px;
+  margin: 0 0 24px;
+  border-left: 3px solid #d97706;
+  border-radius: 6px;
+  background: rgba(217, 119, 6, 0.08);
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.lp-docs-archive-notice a {
+  color: var(--lp-green);
+  text-decoration: underline;
+}
+
+/* Docs screenshot styling */
 .lp-docs-content img[src$=".png"]:not([src*="logo"]) {
   display: block;
   max-width: 260px;
   height: auto;
   margin: 32px auto 40px;
+}
+
+/* v1.0 screenshots are raw — wrap them in a CSS phone frame.
+   v1.1+ screenshots have the frame baked in. */
+.lp-docs-content img[src*="/docs/1.0/"]:not([src*="logo"]) {
   border-radius: 40px;
   border: 8px solid #1a1a1a;
   box-shadow:
@@ -906,7 +997,7 @@
   outline-offset: 0;
 }
 
-[data-theme="dark"] .lp-docs-content img[src$=".png"]:not([src*="logo"]) {
+[data-theme="dark"] .lp-docs-content img[src*="/docs/1.0/"]:not([src*="logo"]) {
   border-color: #3a3a3a;
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.05),
@@ -916,7 +1007,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) .lp-docs-content img[src$=".png"]:not([src*="logo"]) {
+  html:not([data-theme="light"]) .lp-docs-content img[src*="/docs/1.0/"]:not([src*="logo"]) {
     border-color: #3a3a3a;
     box-shadow:
       0 0 0 2px rgba(255, 255, 255, 0.05),
@@ -957,8 +1048,11 @@
 
   .lp-docs-content img[src$=".png"]:not([src*="logo"]) {
     max-width: 220px;
+    margin: 24px auto 32px;
+  }
+
+  .lp-docs-content img[src*="/docs/1.0/"]:not([src*="logo"]) {
     border-width: 6px;
     border-radius: 32px;
-    margin: 24px auto 32px;
   }
 }
