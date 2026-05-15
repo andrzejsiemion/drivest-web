@@ -58,6 +58,16 @@ Distance-based reminders check the latest odometer reading each time you log a f
 
 The reminder advances by its recurrence interval. For date-based reminders, the due date moves forward by the specified number of days (default: 365). For distance-based reminders, the target odometer increases by the specified distance.
 
+## EV / Electricity Bills
+
+### Why didn't the Odometer field prefill when I picked a date?
+
+Prefill only happens when a connected-service snapshot exists for the **exact calendar day** you selected. If the nearest snapshot is from a different day, the field stays empty so you can enter the reading yourself. See [EV Features → Odometer prefill](../ev-features/#odometer-prefill).
+
+### Are Start and End odometers required?
+
+No. They're optional. If you fill both in, the app uses them directly to compute distance and **kWh / 100 km**. If you leave either empty, the bill falls back to automatic snapshot reconciliation against the previous bill.
+
 ## Connected Services
 
 ### Why can't I see the odometer fetch button?

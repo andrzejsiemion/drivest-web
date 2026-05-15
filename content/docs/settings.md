@@ -47,6 +47,9 @@ Choose between three theme options:
 <!-- SCREENSHOT: Appearance picker — close-up of the Appearance section in Settings showing the segmented control with System / Light / Dark options, with "System" selected. -->
 ![Appearance](/images/docs/1.1/settings-appearance.png)
 
+<!-- SCREENSHOT: Dark theme — the app rendered in Dark mode, showing the main screen with the dark colour palette applied across the vehicle picker, fill-up list, and tab bar. -->
+![Dark theme](/images/docs/1.1/dark.png)
+
 ## Language
 
 Drivest supports **English** and **Polski** (Polish). The app language follows your device language by default. To change it:

@@ -48,8 +48,11 @@ Tap the **Scan Receipt** button at the top of the fuel section to use your camer
 
 The scanned values are filled into the form automatically. You can review and adjust them before saving.
 
-<!-- SCREENSHOT: Receipt scanning — the camera view with a receipt being scanned, or the fill-up form after scanning with values auto-filled and the "Scan Receipt" button visible at the top. -->
-![Receipt scanning](/images/docs/1.1/fuel-tracking-receipt-scan.png)
+<!-- SCREENSHOT: Take photo option — the fill-up form with the "Scan Receipt" button at the top of the fuel section, showing the entry point for capturing a receipt with the camera. -->
+![Scan Receipt — take photo](/images/docs/1.1/fuel-tracking-receipt-scan-a.png)
+
+<!-- SCREENSHOT: OCR result — the fill-up form after a receipt has been scanned, with price per unit, volume, and total cost auto-filled from the OCR pass. -->
+![Scan Receipt — OCR result](/images/docs/1.1/fuel-tracking-receipt-scan-b.png)
 
 ## Fuel Efficiency
 

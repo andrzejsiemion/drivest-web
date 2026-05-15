@@ -12,13 +12,22 @@ Track your home charging costs by logging electricity bills.
 
 1. Go to the **EV** tab.
 2. Tap the **+** button.
-3. Enter the bill details:
-   - **Start Date** and **End Date** — the billing period.
-   - **Amount** — the total bill amount.
+3. Enter the bill details, grouped into three sections:
+   - **Start** — the period's start **Date** and, optionally, the **Odometer** reading on that date.
+   - **End** — the period's end **Date** and, optionally, the **Odometer** reading on that date.
+   - **Electricity** — **Total kWh from Meter** and **Total Cost** for the billing period.
 4. Tap **Save**.
 
 <!-- SCREENSHOT: Add electricity bill — the "Add Electricity Bill" form with start date, end date, and amount fields. -->
 ![Add electricity bill](/images/docs/1.1/ev-add-bill.png)
+
+### Odometer prefill
+
+If a connected-service snapshot (Volvo or Toyota) was captured on the **exact calendar day** you select for Start or End, the matching Odometer field is filled in automatically using the vehicle's distance unit. If no snapshot exists for that day, the field stays empty and you can type the reading yourself. Any value you type takes precedence and won't be overwritten if you change the date afterwards.
+
+### How distance is calculated
+
+When both Start and End odometers are filled in (manually or via prefill), the bill uses them directly to compute distance, **kWh / 100 km**, and cost per km. If either field is empty, the app falls back to its automatic snapshot reconciliation against the previous bill — see [Snapshot History](#snapshot-history) below.
 
 ## In-Progress Periods
 

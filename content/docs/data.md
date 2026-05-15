@@ -29,6 +29,9 @@ The icon to the left of each value shows whether the latest reading moved up or 
 
 The arrow direction reflects what actually happened — there's no "good" or "bad" colour coding.
 
+<!-- SCREENSHOT: Trend arrows — close-up of the snapshot card showing the three rows with a mix of trend icons on the left: one up arrow, one down arrow, and one flat (grey) icon, so all three states are visible side by side. -->
+![Trend arrows](/images/docs/1.1/data-trend-arrows.png)
+
 ### Fuel + EV Together
 
 For plug-in hybrids (vehicles with both a fuel tank and an EV component), the card appears **twice** — once under a **Fuel** header for fill-up data, once under an **EV** header for electricity bill data. Pure-fuel and pure-EV vehicles show only the relevant section.
