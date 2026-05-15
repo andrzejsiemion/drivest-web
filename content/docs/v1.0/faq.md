@@ -71,12 +71,6 @@ The fetch button only appears when:
 
 Absolutely. Connected services are entirely optional. You can enter all data manually.
 
-### What does a red "Failed" badge in Snapshot History mean?
-
-It means a fetch attempt (from a Shortcut or background refresh) recorded a snapshot row but no new odometer reading was retrieved. The row's subtitle carries the underlying reason — most often a rate limit or transient network/server error from the manufacturer's API. The app retries automatically before marking a snapshot as failed, and the row preserves the previous known odometer so the entry isn't blank. The next successful fetch records a fresh reading.
-
-If you see *"Keychain locked — device must be unlocked at least once after boot"*, a scheduled fetch ran while the device was still locked from a reboot. Unlock the phone once and the next fetch will succeed; no action needed in the app. See [Connected Services → Reliability](../connected-services/#reliability) for details.
-
 ## Backup
 
 ### How do I transfer data to a new phone?

@@ -7,7 +7,7 @@ description: "Appearance, language, categories, and vehicle order"
 Access Settings by tapping the **gear icon** in the top-right corner of any tab.
 
 <!-- SCREENSHOT: Settings screen — the main Settings screen showing all sections: Manage Vehicles, Vehicle Order (with sort picker), Manage section (Currency, Categories, Integrations), Appearance (theme picker with System/Light/Dark), Language, and About. -->
-![Settings](/images/docs/1.1/settings-main.png)
+![Settings](/images/docs/1.0/settings-main.png)
 
 ## Manage Vehicles
 
@@ -30,7 +30,7 @@ Configure your default currency and additional currencies. See [Currency](../cur
 
 ## Categories
 
-Manage the expense categories used in cost tracking. See [Cost Tracking](../cost-tracking/#categories) for details.
+Manage the expense categories used in cost tracking. See [Cost Tracking](../cost-tracking/#custom-categories) for details.
 
 ## Integrations
 
@@ -45,17 +45,15 @@ Choose between three theme options:
 - **Dark** — always dark.
 
 <!-- SCREENSHOT: Appearance picker — close-up of the Appearance section in Settings showing the segmented control with System / Light / Dark options, with "System" selected. -->
-![Appearance](/images/docs/1.1/settings-appearance.png)
+![Appearance](/images/docs/1.0/settings-appearance.png)
 
 ## Language
 
-Drivest supports **English** and **Polski** (Polish). The app language follows your device language by default. To change it:
+Drivest supports **English** and **Polish**. The app language follows your device language by default. To change it:
 
-1. Open **Settings**.
-2. Under **Language**, tap the picker and choose **English** or **Polski**.
-3. Drivest asks to restart to apply the new language — tap **Restart** to switch immediately, or **Later** to switch the next time you launch the app.
-
-Your choice is remembered across launches independently of the device language.
+1. Tap **App Language** in Settings.
+2. This opens your device's app-specific language settings.
+3. Select the preferred language for Drivest.
 
 ## About
 

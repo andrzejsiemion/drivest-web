@@ -29,7 +29,7 @@ When you open Drivest for the first time, the app will ask you to add your first
 5. Tap **Save**.
 
 <!-- SCREENSHOT: Vehicle form — the "Add Vehicle" screen filled with sample data (name, make, model, initial odometer). Show the fuel type and distance unit pickers visible. -->
-![Adding a vehicle](/images/docs/1.1/getting-started-add-vehicle.png)
+![Adding a vehicle](/images/docs/1.0/getting-started-add-vehicle.png)
 
 ## Navigating the App
 
@@ -38,18 +38,18 @@ The app has three or four tabs at the bottom, depending on whether you have an E
 - **Fuel** — your fill-up history and the button to add new fill-ups.
 - **EV** — electricity bills and EV tracking (visible only if you have an EV vehicle).
 - **Costs** — your expense records by category.
-- **Data** — vehicle snapshot, period stats, charts, and a map of fill-up locations. See [Data](../data/).
+- **Statistics** — spending summaries and odometer charts.
 
 If you have multiple vehicles, use the **vehicle picker card** at the top of each tab to switch between them.
 
 To access Settings, tap the **gear icon** in the top-right corner of any tab.
 
-<!-- SCREENSHOT: Main screen — the Fuel tab with the vehicle picker card at the top showing a vehicle name and odometer, a list of fill-ups below, and the tab bar at the bottom with Fuel, Costs, and Data tabs visible. -->
-![Main screen](/images/docs/1.1/getting-started-main-screen.png)
+<!-- SCREENSHOT: Main screen — the Fuel tab with the vehicle picker card at the top showing a vehicle name and odometer, a list of fill-ups below, and the tab bar at the bottom with Fuel, Costs, and Statistics tabs visible. -->
+![Main screen](/images/docs/1.0/getting-started-main-screen.png)
 
 ## Multiple Vehicles
 
 You can track as many vehicles as you need. Add more vehicles from **Settings > Manage Vehicles**, then use the vehicle picker at the top of each tab to switch between them.
 
 <!-- SCREENSHOT: Vehicle picker — the vehicle picker dropdown expanded showing two or more vehicles to choose from, with a checkmark next to the selected one. -->
-![Vehicle picker](/images/docs/1.1/getting-started-vehicle-picker.png)
+![Vehicle picker](/images/docs/1.0/getting-started-vehicle-picker.png)

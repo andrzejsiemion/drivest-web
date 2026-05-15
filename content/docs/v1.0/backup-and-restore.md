@@ -17,7 +17,7 @@ Drivest lets you export and import your vehicle data using `.drivestbackup` file
 The export creates a `.drivestbackup` file containing all data for that vehicle: fill-ups, costs, reminders, photos, and attachments.
 
 <!-- SCREENSHOT: Vehicle detail Data section — the bottom part of the vehicle detail screen showing the "Data" section with "Export Data" and "Import Data..." buttons. -->
-![Export and import](/images/docs/1.1/backup-export-import.png)
+![Export and import](/images/docs/1.0/backup-export-import.png)
 
 ## Importing Data
 
@@ -44,22 +44,20 @@ Before importing, the app shows a preview of the data in the file and lets you c
 Review the preview carefully before confirming.
 
 <!-- SCREENSHOT: Import confirmation — the import confirmation sheet showing a preview of the data to be imported (vehicle name, number of fill-ups, costs, reminders) and the Merge/Replace strategy options. -->
-![Import confirmation](/images/docs/1.1/backup-import-confirmation.png)
+![Import confirmation](/images/docs/1.0/backup-import-confirmation.png)
 
 ## What's Included in a Backup
 
 - Vehicle information (name, make, model, VIN, settings)
-- All fill-up records with photos and GPS coordinates (when captured)
+- All fill-up records with photos
 - All cost entries with photos and file attachments
 - Reminders
 - Electricity bills (for EV vehicles)
-- Energy snapshots (odometer + battery state of charge fetched from connected services)
 
 ## What's Not Included
 
 - App-wide settings (currency, categories, appearance)
 - Connected service credentials (authentication tokens)
-- The on-device cache of receipt photos beyond what's attached to a record
 
 ## Tips
 

@@ -19,7 +19,7 @@ description: "Recording vehicle expenses by category"
 4. Tap **Save**.
 
 <!-- SCREENSHOT: Add cost form — the "Add Cost" screen with a category picker showing icons (e.g. Insurance with shield icon selected), amount field filled, date picker, and the "Create Reminder" toggle visible at the bottom. -->
-![Add cost](/images/docs/1.1/cost-tracking-add-cost.png)
+![Add cost](/images/docs/1.0/cost-tracking-add-cost.png)
 
 ## Categories
 
@@ -34,7 +34,7 @@ The app comes with built-in categories:
 - Tickets
 
 <!-- SCREENSHOT: Cost list — the Costs tab showing a list of cost entries grouped or listed chronologically, each with category icon, name, amount, and date. -->
-![Cost list](/images/docs/1.1/cost-tracking-list.png)
+![Cost list](/images/docs/1.0/cost-tracking-list.png)
 
 ### Custom Categories
 
@@ -42,14 +42,14 @@ You can create your own categories and reorder or delete existing ones:
 
 1. Go to **Settings > Categories**.
 2. Tap **+** to add a new category.
-3. Enter a name and choose an icon.
+3. Enter a name and choose an icon from the icon grid.
 4. Tap **Add**.
 
 To reorder categories, tap **Edit** and drag them into your preferred order. To delete a category, swipe left or use the Edit mode.
 
-![Category list](/images/docs/1.1/cost-tracking-categories-a.png)
+![Category list](/images/docs/1.0/cost-tracking-categories-a.png)
 
-![New category](/images/docs/1.1/cost-tracking-categories-b.png)
+![New category](/images/docs/1.0/cost-tracking-categories-b.png)
 
 ## Multi-Currency Support
 

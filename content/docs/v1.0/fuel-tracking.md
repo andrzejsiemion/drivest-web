@@ -22,25 +22,11 @@ description: "Logging fill-ups, receipt scanning, and fuel efficiency"
 4. Tap **Save**.
 
 <!-- SCREENSHOT: Add fill-up form — the "Add Fill-Up" screen with odometer, price per unit, volume, total cost fields filled with sample values. The "Full Tank" toggle should be visible and turned on. -->
-![Add fill-up](/images/docs/1.1/fuel-tracking-add-fillup.png)
+![Add fill-up](/images/docs/1.0/fuel-tracking-add-fillup.png)
 
 ### Smart Field Calculation
 
 When entering fuel data, the app automatically calculates the third value if you provide two of the three fields (price per unit, volume, total cost). For example, if you enter the price per unit and the volume, the total cost is calculated automatically.
-
-## Location Capture
-
-Drivest can attach GPS coordinates to each fill-up so you can see your fuel stops on a map (see [Data → Map - Fill-ups](../data/#map---fill-ups)). When you save a new fill-up, the app silently asks for your current location and stores it on the fill-up if it's accurate enough.
-
-- No taps needed in the happy path — capture is automatic.
-- If location permission is denied or no fresh fix is available, the fill-up is still saved; it just has no coordinates and won't appear on the map.
-- **Adjust on the Add screen** — while the form is open, the **Location** row shows the current fix. Tap the pin icon to force a fresh GPS read, or **long-press** the row to open a map and drop a pin at a different spot.
-- **Edit a saved fill-up** — open the fill-up, tap **Edit**, then long-press the **Location** row to adjust the pin. The Location row only appears in Edit if the fill-up already carries coordinates; legacy or imported entries with no GPS keep that state.
-
-The first time you save a fill-up, iOS will ask for **"While Using"** location permission. Granting it enables the auto-capture; denying it means no fill-up will carry GPS data until you grant permission later in **Settings > Drivest > Location**.
-
-<!-- SCREENSHOT: Location permission — the iOS system permission prompt for "While Using" location, shown over the fill-up form on first save. Alternatively, the fill-up detail page with a small map preview showing the captured fuel-stop location. -->
-![Location capture](/images/docs/1.1/fuel-tracking-location.png)
 
 ## Receipt Scanning
 
@@ -49,7 +35,7 @@ Tap the **Scan Receipt** button at the top of the fuel section to use your camer
 The scanned values are filled into the form automatically. You can review and adjust them before saving.
 
 <!-- SCREENSHOT: Receipt scanning — the camera view with a receipt being scanned, or the fill-up form after scanning with values auto-filled and the "Scan Receipt" button visible at the top. -->
-![Receipt scanning](/images/docs/1.1/fuel-tracking-receipt-scan.png)
+![Receipt scanning](/images/docs/1.0/fuel-tracking-receipt-scan.png)
 
 ## Fuel Efficiency
 
@@ -62,14 +48,14 @@ The efficiency format depends on your vehicle settings:
 - **MPG (UK)** — miles per imperial gallon.
 
 <!-- SCREENSHOT: Fill-up list with efficiency — the Fuel tab list showing several fill-ups, each with date, volume, cost, and an efficiency badge (e.g. "7.2 L/100km") displayed on the right side. -->
-![Fuel efficiency badges](/images/docs/1.1/fuel-tracking-efficiency.png)
+![Fuel efficiency badges](/images/docs/1.0/fuel-tracking-efficiency.png)
 
 ## Multi-Currency Support
 
 If you have multiple currencies configured (see [Currency](../currency/)), a currency selector appears next to the price and total cost fields. Select the currency you paid in, and the app will store the exchange rate for statistics.
 
 <!-- SCREENSHOT: Currency selector — the fill-up form with the currency badge (e.g. "EUR") visible next to the price field, showing that a non-default currency is selected. -->
-![Currency selector](/images/docs/1.1/fuel-tracking-currency.png)
+![Currency selector](/images/docs/1.0/fuel-tracking-currency.png)
 
 ## Editing and Deleting
 
