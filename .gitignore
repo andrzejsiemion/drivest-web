@@ -24,5 +24,4 @@ Thumbs.db
 .env.local
 
 # Project-specific
-graphics/
 /docs/
