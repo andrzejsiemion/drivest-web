@@ -50,6 +50,8 @@ This is useful for keeping your odometer readings up to date without manually op
 
 To make the fetch run on its own, wrap the **Fetch Odometer** action in a Personal Automation:
 
+![Automation](/images/docs/1.1/shortcuts-automation.png)
+
 1. Open the **Shortcuts** app and switch to the **Automation** tab.
 2. Tap **+** in the top right and choose **New Automation**.
 3. Pick a trigger — common choices are:
@@ -61,10 +63,14 @@ To make the fetch run on its own, wrap the **Fetch Odometer** action in a Person
 6. Tap the action to select the **Vehicle** you want to update. Repeat the action for each vehicle if you own more than one.
 7. Turn **Run Immediately** on so the automation fires without a notification prompt, then tap **Done**.
 
+![Shortcuts fetch](/images/docs/1.1/shortcuts-fetched-odometer-for-vehicle.png)
+
+Typing **Drivest** into the action search filters the list down to the **Fetch Odometer** action immediately, so you don't have to scroll through the full action library. Once the action is configured, it displays a small confirmation subtitle such as *"Fetched odometer for 1 vehicle(s)"* — a quick way to verify that a vehicle is actually selected before you save. The finished automation then appears under **Personal** on the Automation tab, summarised by its trigger and action (for example *"At 23:50, daily — Fetch Odometer"*), and runs silently from there on.
+
 Every successful run is recorded in the vehicle's **Snapshot History** with a **Scheduled** badge; see [Reliability](#reliability) below for what happens when a run fails.
 
 <!-- SCREENSHOT: Odometer fetch button — the fill-up form odometer field with the circular download button visible next to the odometer value, indicating that connected service fetch is available. -->
-![Odometer fetch](/images/docs/1.1/connected-services-odometer-fetch.png)
+![Odometer fetch](/images/docs/1.1/ev-snapshot-history.png)
 
 ### Reliability
 
