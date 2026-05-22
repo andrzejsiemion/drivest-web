@@ -1,0 +1,29 @@
+---
+title: "Documentation (v1.1)"
+description: "Drivest user documentation for app version 1.1"
+---
+
+This is the documentation for **Drivest v1.1**. For the latest documentation, see [the current docs](/docs/).
+
+## Guides
+
+- [Getting Started](getting-started/) — First launch, adding your first vehicle
+- [Fuel Tracking](fuel-tracking/) — Logging fill-ups, receipt scanning, fuel efficiency
+- [Cost Tracking](cost-tracking/) — Recording expenses by category
+- [Reminders](reminders/) — Date-based and distance-based reminders
+- [EV Features](ev-features/) — Electricity bills, EV tracking
+- [Data](data/) — Vehicle snapshot card, stats, charts, fill-up map
+- [Currency](currency/) — Default currency, additional currencies, exchange rates
+- [Connected Services](connected-services/) — Vehicle manufacturer integrations, Shortcuts
+- [Backup & Restore](backup-and-restore/) — Export and import your data
+- [Settings](settings/) — Appearance, language, categories, vehicle order
+- [FAQ](faq/) — Frequently asked questions and troubleshooting
+
+## Requirements
+
+- iOS 17.0 or later
+- iPhone
+
+## Support
+
+Drivest is free and open source. If you have questions or find a bug, visit the [GitHub repository](https://github.com/andrzejsiemion/drivest-ios).

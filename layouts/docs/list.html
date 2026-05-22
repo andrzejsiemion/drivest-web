@@ -1,11 +1,14 @@
 {{ define "main" }}
 
-{{ $isArchive := strings.HasPrefix .RelPermalink "/docs/v1.0/" }}
+{{ $archiveVersion := "" }}
+{{ if strings.HasPrefix .RelPermalink "/docs/v1.0/" }}{{ $archiveVersion = "v1.0" }}{{ end }}
+{{ if strings.HasPrefix .RelPermalink "/docs/v1.1/" }}{{ $archiveVersion = "v1.1" }}{{ end }}
+{{ $isArchive := ne $archiveVersion "" }}
 
 <section class="lp-policy-header">
   <div class="lp-policy-header-inner">
     <img src="/images/logo.png" alt="Drivest" class="lp-policy-logo">
-    <h1>Documentation{{ if $isArchive }} (v1.0){{ end }}</h1>
+    <h1>Documentation{{ if $isArchive }} ({{ $archiveVersion }}){{ end }}</h1>
     <p class="lp-policy-meta">Learn how to use Drivest to track your vehicle costs</p>
   </div>
 </section>
@@ -17,8 +20,9 @@
         <label class="lp-docs-version-label" for="lp-docs-version-select">Version</label>
         <div class="lp-docs-version-select-wrap">
           <select id="lp-docs-version-select" class="lp-docs-version-select" onchange="if(this.value)location.href=this.value;">
-            <option value="/docs/"{{ if not $isArchive }} selected{{ end }}>v1.1 (latest)</option>
-            <option value="/docs/v1.0/"{{ if $isArchive }} selected{{ end }}>v1.0</option>
+            <option value="/docs/"{{ if not $isArchive }} selected{{ end }}>v1.2 (latest)</option>
+            <option value="/docs/v1.1/"{{ if eq $archiveVersion "v1.1" }} selected{{ end }}>v1.1</option>
+            <option value="/docs/v1.0/"{{ if eq $archiveVersion "v1.0" }} selected{{ end }}>v1.0</option>
           </select>
         </div>
       </div>
@@ -32,7 +36,7 @@
       <a href="/" class="lp-policy-back">&#8592; Back to Drivest</a>
       {{ if $isArchive }}
       <div class="lp-docs-archive-notice">
-        You're viewing the docs for <strong>Drivest v1.0</strong>. <a href="/docs/">View the latest documentation</a>.
+        You're viewing the docs for <strong>Drivest {{ $archiveVersion }}</strong>. <a href="/docs/">View the latest documentation</a>.
       </div>
       {{ end }}
       {{ .Content }}

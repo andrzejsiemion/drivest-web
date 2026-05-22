@@ -15,20 +15,18 @@ Your default currency is used for stats and summaries.
 
 All amounts on the Data tab are shown in your default currency.
 
-A first-launch coachmark on the Currency row in Settings reminds you that this is where multi-currency tracking is configured. It dismisses itself after you tap the row.
-
 ## Additional Currencies
 
-You can add extra currencies to use when logging fill-ups, costs, or charging sessions in a foreign currency.
+You can add extra currencies to use when logging fill-ups or costs in a foreign currency.
 
 1. Go to **Settings > Currency**.
 2. Tap **Add Currency** (requires a default currency to be set first).
 3. Select the currency from the list.
 
-When you add a fill-up, cost, or charging session, a currency selector appears next to the price fields if you have more than one currency configured.
+When you add a fill-up or cost, a currency selector appears next to the price fields if you have more than one currency configured.
 
-<!-- SCREENSHOT: Currency settings — the Currency settings screen showing the default currency picker at the top (e.g. "PLN"), the additional currencies section with one or two currencies listed (e.g. "EUR" with rate "4.3000" and last updated date), and the "Add Currency" and "Refresh Rates Now" buttons. -->
-![Currency settings](/images/docs/1.2/currency-settings.png)
+<!-- SCREENSHOT: Currency settings — the Currency settings screen showing the default currency picker at the top (e.g. "PLN"), the additional currencies section below with one or two currencies listed (e.g. "EUR" with rate "4.3000" and last updated date), and the "Add Currency" and "Refresh Rates Now" buttons. -->
+![Currency settings](/images/docs/1.1/currency-settings.png)
 
 ## Exchange Rates
 
@@ -42,7 +40,6 @@ Exchange rates are fetched automatically from the **NBP** (National Bank of Pola
 ### Manual Rates
 
 You can override any exchange rate manually:
-
 1. Tap the rate value for a currency in the settings.
 2. Enter your preferred rate.
 3. The currency will be marked as "Manual".
