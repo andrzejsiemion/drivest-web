@@ -1,13 +1,13 @@
 ---
 title: "Settings"
 weight: 100
-description: "Appearance, language, categories, and vehicle order"
+description: "Appearance, language, categories, vehicle order, and welcome hints"
 ---
 
 Access Settings by tapping the **gear icon** in the top-right corner of any tab.
 
-<!-- SCREENSHOT: Settings screen — the main Settings screen showing all sections: Manage Vehicles, Vehicle Order (with sort picker), Manage section (Currency, Categories, Integrations), Appearance (theme picker with System/Light/Dark), Language, and About. -->
-![Settings](/images/docs/1.1/settings-main.png)
+<!-- SCREENSHOT: Settings screen — the main Settings screen showing all sections: Manage Vehicles, Vehicle Order (with sort picker), Manage section (Currency, Categories, Integrations), Appearance (theme picker with System/Light/Dark), Language, Help, and About. -->
+![Settings](/images/docs/1.2/settings-main.png)
 
 ## Manage Vehicles
 
@@ -45,10 +45,10 @@ Choose between three theme options:
 - **Dark** — always dark.
 
 <!-- SCREENSHOT: Appearance picker — close-up of the Appearance section in Settings showing the segmented control with System / Light / Dark options, with "System" selected. -->
-![Appearance](/images/docs/1.1/settings-appearance.png)
+![Appearance](/images/docs/1.2/settings-appearance.png)
 
 <!-- SCREENSHOT: Dark theme — the app rendered in Dark mode, showing the main screen with the dark colour palette applied across the vehicle picker, fill-up list, and tab bar. -->
-![Dark theme](/images/docs/1.1/dark.png)
+![Dark theme](/images/docs/1.2/dark.png)
 
 ## Language
 
@@ -56,9 +56,30 @@ Drivest supports **English** and **Polski** (Polish). The app language follows y
 
 1. Open **Settings**.
 2. Under **Language**, tap the picker and choose **English** or **Polski**.
-3. Drivest asks to restart to apply the new language — tap **Restart** to switch immediately, or **Later** to switch the next time you launch the app.
+3. An inline ✅ acknowledgment appears under the picker: *"Language saved. Restart the app to apply it."*
+4. Tap the red **Restart now** button to relaunch immediately, or close Settings and restart the app yourself when convenient.
 
-Your choice is remembered across launches independently of the device language.
+The "Restart pending" indicator persists across closing/reopening Settings *and* across foreground/background cycles until you actually restart and the new language is applied — so even if you tap **Done** without restarting, the next time you open Settings the reminder is still there.
+
+<!-- SCREENSHOT: Language picker with restart — the Language section of Settings showing the picker set to "Polski", the inline green checkmark with the "Language saved. Restart the app to apply it." copy underneath, and the red "Restart now" button below that. -->
+![Language restart](/images/docs/1.2/settings-language-restart.png)
+
+## Help
+
+### Show welcome hints again
+
+The welcome coachmarks (Settings gear, Currency row, EV ➕ button, Latest Reading card, Location row gestures) self-dismiss the first time you perform the gesture they describe. To bring them back:
+
+1. **Settings → Help → Show welcome hints again.**
+2. An inline ✅ "Hints will reappear after you restart the app." plus a red **Restart now** button.
+3. Tap **Restart now** (or quit the app yourself).
+
+On the next launch, Drivest wipes the tip state datastore *before* TipKit configures itself, so every coachmark is fresh again.
+
+> Why the restart? `Tips.resetDatastore()` only takes effect when called *before* `Tips.configure()`. Drivest sets a UserDefault flag on tap and honours it on the next launch.
+
+<!-- SCREENSHOT: Show welcome hints again — the Help → Show welcome hints again row tapped, with the inline green checkmark acknowledgement and the red "Restart now" button visible. -->
+![Show hints again](/images/docs/1.2/settings-show-hints.png)
 
 ## About
 

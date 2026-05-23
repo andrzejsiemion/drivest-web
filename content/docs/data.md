@@ -1,43 +1,34 @@
 ---
 title: "Data"
 weight: 60
-description: "Vehicle snapshot card, period stats, charts, and a map of fill-up locations"
+description: "Latest Reading card, Stats, Charts, Map, Efficiency, and Readings"
 ---
 
-The **Data** tab is the hub for everything analytical about the selected vehicle. It shows an at-a-glance summary card at the top and a list of three pushable destinations: **Stats**, **Charts**, and **Map - Fill-ups**.
+The **Data** tab is the hub for everything analytical about the selected vehicle. It shows the **Latest Reading** card (for connected EV vehicles) at the top, followed by a list of pushable destinations: **Stats**, **Charts**, **Map**, **Efficiency**, and **Readings**.
 
-## Vehicle Snapshot Card
+Every detail screen below shows the vehicle's name as a subtitle under its title so you always know which car you're looking at.
 
-A summary card appears between the vehicle picker and the menu, showing three quick metrics for the selected vehicle:
+## Latest Reading Card
 
-- **Average consumption** — the average fuel or EV efficiency across all recorded fill-ups (or electricity bills, for EVs).
-- **Last consumption** — the efficiency of the most recent fill-up that has one.
-- **Last price** — the per-litre price of the most recent fill-up, or per-kWh price of the most recent electricity bill.
+When the selected vehicle has a connected service integration that returns energy data (Volvo, Toyota EVs), a snapshot card sits between the vehicle picker and the menu list. It shows up to three at-a-glance metrics:
 
-Units adapt to the vehicle: `L/100km` for fuel, `kWh/100km` for EV (the exact format follows your vehicle's **Efficiency Format** setting). Prices use the currency that was recorded on the fill-up or bill.
+- **Odometer** (km / mi) — current mileage from the latest snapshot.
+- **Battery** (%) plus an estimated remaining range if the API returns one.
+- **Fuel** (L / gal) plus an estimated remaining range — for plug-in hybrids whose API exposes fuel level.
 
-<!-- SCREENSHOT: Data tab snapshot card — the top of the Data tab showing the vehicle picker, the snapshot card with three rows (Average consumption, Last consumption, Last price) each with a trend arrow icon on the left and the value on the right, followed by the Stats / Charts / Map - Fill-ups list below. -->
-![Data tab snapshot](/images/docs/1.1/data-snapshot.png)
+A timestamp on the right tells you how long ago the snapshot was taken.
 
-### Trend Arrows
+<!-- SCREENSHOT: Latest Reading card — the top of the Data tab for a connected EV vehicle, showing the vehicle picker followed by the Latest Reading card with the odometer / battery / fuel rows on the left and the relative timestamp on the right, followed by the Stats / Charts / Map / Efficiency / Readings list below. -->
+![Latest Reading card](/images/docs/1.2/data-latest-reading.png)
 
-The icon to the left of each value shows whether the latest reading moved up or down compared to the one before it:
+### Gestures
 
-- **Up arrow** — value increased (consumption went up, or price went up).
-- **Down arrow** — value decreased.
-- **Flat icon (grey)** — no comparison possible yet (only one data point on file).
+- **Tap the card** → opens the snapshot detail (every field returned for that snapshot).
+- **Long-press the card** → triggers a manual fetch from the vehicle API. While the fetch is in flight, an inline spinner replaces the timestamp.
 
-The arrow direction reflects what actually happened — there's no "good" or "bad" colour coding.
+A welcome hint on first use explains both gestures. It dismisses itself the first time you use either.
 
-<!-- SCREENSHOT: Trend arrows — close-up of the snapshot card showing the three rows with a mix of trend icons on the left: one up arrow, one down arrow, and one flat (grey) icon, so all three states are visible side by side. -->
-![Trend arrows](/images/docs/1.1/data-trend-arrows.png)
-
-### Fuel + EV Together
-
-For plug-in hybrids (vehicles with both a fuel tank and an EV component), the card appears **twice** — once under a **Fuel** header for fill-up data, once under an **EV** header for electricity bill data. Pure-fuel and pure-EV vehicles show only the relevant section.
-
-<!-- SCREENSHOT: Plug-in hybrid snapshot — the Data tab for a plug-in hybrid vehicle, showing two snapshot cards stacked: one with a "Fuel" header and one with an "EV" header, each with its own three-metric layout. -->
-![Plug-in hybrid snapshot](/images/docs/1.1/data-snapshot-hybrid.png)
+For non-EV or non-connected vehicles, this card is hidden and the menu list starts right after the vehicle picker.
 
 ## Stats
 
@@ -56,8 +47,8 @@ Each period shows:
 
 If you have a default currency set, amounts are shown in that currency. Fill-ups recorded in other currencies are converted using the exchange rate at the time of the fill-up.
 
-<!-- SCREENSHOT: Stats screen — the Stats detail page showing three stacked sections labeled "Last Month", "Last Year", and "All Time", each with rows for Total Spent, Total Fuel, Fill-Ups, and Avg Efficiency. -->
-![Stats](/images/docs/1.1/data-stats.png)
+<!-- SCREENSHOT: Stats screen — the Stats detail page showing the vehicle name as a subtitle under the title, then three stacked sections labeled "Last Month", "Last Year", and "All Time", each with rows for Total Spent, Total Fuel, Fill-Ups, and Avg Efficiency. -->
+![Stats](/images/docs/1.2/data-stats.png)
 
 ## Charts
 
@@ -68,38 +59,80 @@ Tap **Charts** for a visual trend chart. You can switch between:
 - **Fuel Price** — price per unit trend.
 - **Cost/km** — running cost per kilometre.
 
-Use the period selector below the chart to filter by time range — **All**, **YTD** (year to date), **Prev Y**, **This M**, **Prev M**, or **Custom** (pick any start / end date). A summary section underneath shows total spent, total fuel, fill-up count, and average efficiency for the selected period.
+Use the period selector below the chart to filter by time range — **All**, **YTD**, **Prev Y**, **This M**, **Prev M**, or **Custom**. A summary section underneath shows total spent, total fuel, fill-up count, and average efficiency for the selected period.
 
-<!-- SCREENSHOT: Charts screen — the Charts detail page showing a line chart at top, the chart-type selector (Mileage / Efficiency / Fuel Price / Cost/km), the period selector below it with the options All / YTD / Prev Y / This M / Prev M / Custom, and the summary section underneath with Total Spent / Total Fuel / Fill-Ups / Avg Efficiency. -->
-![Charts](/images/docs/1.1/data-charts.png)
+<!-- SCREENSHOT: Charts screen — the Charts detail page with the vehicle name subtitle, a line chart at top, the chart-type selector (Mileage / Efficiency / Fuel Price / Cost/km), the period selector (All / YTD / Prev Y / This M / Prev M / Custom), and the summary section underneath. -->
+![Charts](/images/docs/1.2/data-charts.png)
 
-## Map - Fill-ups
+## Map
 
-Tap **Map - Fill-ups** for a full-screen map showing every fill-up that has GPS coordinates for the selected vehicle. The map auto-centres and zooms to fit every pin. If the selected vehicle has no fill-ups with GPS data, an empty-state message explains how to enable it (see [Fuel Tracking](../fuel-tracking/#location-capture)).
+Tap **Map** for a full-screen map showing every location-tagged record for the selected vehicle — fill-ups, costs, and charging sessions on a single map. The map auto-centres and zooms to fit every pin. If the selected vehicle has nothing geo-tagged, an empty-state message explains how to enable it (see [Fuel Tracking → Location Capture](../fuel-tracking/#location-capture)).
 
-<!-- SCREENSHOT: Map screen — the Map - Fill-ups full-screen map with several round accent-coloured pins (each containing a fuel-pump glyph) scattered across a city or regional view, auto-zoomed to fit all pins. -->
-![Fill-ups map](/images/docs/1.1/data-map.png)
+<!-- SCREENSHOT: Unified map — the Map full-screen view with a mix of pin colours: green fuel-pump pins (fill-ups), orange wrench pins (cost entries), and blue lightning-bolt pins (charging sessions) scattered across a city or regional view, auto-zoomed to fit all pins. The toolbar shows the filter (≡) button in the top-right. -->
+![Unified map](/images/docs/1.2/data-map.png)
 
-### Pins and Clusters
+### Pin Types
 
-- **Single pin** — a round accent-coloured circle with a fuel-pump glyph at a fill-up's location.
-- **Cluster badge** — when two or more fill-ups sit close enough together to overlap visually at the current zoom, they merge into a slightly larger circle showing the **count** (e.g. "3", "8") instead of separate pins. The badge sits at the cluster's centroid.
+| Pin | Entity | Tint |
+|---|---|---|
+| ⛽ fuel pump | Fill-up | Accent (green) |
+| 🔧 wrench | Cost entry | Orange |
+| ⚡ bolt | Charging session | Blue |
 
-Clustering recomputes whenever you finish a pan or pinch — pins re-group as the zoom changes.
+A pin's coordinate comes from the entity's stored GPS — entries without a location are silently excluded from the map.
 
-<!-- SCREENSHOT: Map cluster — the Map - Fill-ups screen zoomed out enough that several fill-ups have merged into one or two cluster badges (each showing a count like "3" or "8"), with a few single pins also visible. -->
-![Map with cluster badges](/images/docs/1.1/data-map-cluster.png)
+### Clusters
 
-### Tapping
+When two or more pins (of any mix of types) overlap at the current zoom level, they collapse into a single round badge showing the **count**. Tap a cluster to zoom in; the pins will split into smaller clusters or individual pins as the camera moves. If pins share the exact same coordinate (e.g. several fill-ups at the same gas station), tapping the cluster instead opens a chooser list with mixed-type rows.
 
-- **Tap a single pin** → a read-only **detail sheet** slides up from the bottom showing that fill-up's **date**, **fuel type** (when set), **odometer**, **volume**, **price per litre**, and **total cost**. Swipe down to dismiss. The sheet is browse-only — to edit or delete the fill-up, open it from the **Fuel** tab.
-- **Tap a cluster badge** → the camera animates in to frame just the fill-ups in that cluster. The cluster typically splits into individual pins (or smaller clusters) at the new zoom. Repeat-tap to drill in further.
+<!-- SCREENSHOT: Map clusters — the Map screen zoomed out enough that several pins have merged into cluster badges (each showing a count like "3" or "8"), with a few single pins of different types also visible. -->
+![Map clusters](/images/docs/1.2/data-map-cluster.png)
 
-If two fill-ups are at exactly the same coordinates (e.g. the same gas station), they may stay clustered even at maximum zoom — open them from the Fuel tab in that case.
+### Filtering
 
-<!-- SCREENSHOT: Fill-up detail sheet — the Map - Fill-ups screen with the bottom detail sheet visible after tapping a single pin, showing the fill-up's date, fuel type, odometer, volume, price per litre, and total cost. -->
-![Fill-up detail sheet from map](/images/docs/1.1/data-map-detail.png)
+A `≡` filter button sits in the toolbar (top-right). Tap it to reveal three toggles — **Fill-ups**, **Costs**, **Charging sessions**. Turn any off to hide that pin type from the map. The filter resets to "all visible" each time you re-open the Map (it isn't persisted).
+
+When all three filters are off, an inline empty state says "Nothing to show — turn a filter back on."
+
+<!-- SCREENSHOT: Map filter — the filter sheet open from the toolbar showing three toggles (Fill-ups, Costs, Charging sessions). At least one toggle should be off so the difference is visible against the map underneath. -->
+![Map filter](/images/docs/1.2/data-map-filter.png)
+
+### Tapping a Single Pin
+
+Tapping a pin slides up a per-type detail sheet:
+
+- **Fill-up** → date, fuel type, odometer, volume, price/L, total cost, plus a **View Details** button that pushes the full editable Fill-Up detail.
+- **Cost** → date, category icon, amount, plus **View Details** to push the Cost detail.
+- **Charging session** → date, location name (if set), kWh, total cost, plus **View Details** to push the Session detail.
+
+<!-- SCREENSHOT: Map detail sheet — the Map screen with a per-type detail sheet slid up from the bottom after tapping a single pin. Showing a charging-session sheet (date, location name, kWh, total cost, View Details button) is preferred because it's new in 1.2 — a cost or fill-up variant is also acceptable. -->
+![Map detail sheet](/images/docs/1.2/data-map-detail.png)
+
+## Efficiency
+
+Tap **Efficiency** for a period-aware breakdown of fuel and EV consumption alongside one another. A **Granularity** toggle switches the chart between:
+
+- **Per fill-up / per bill** (default) — one chart point per record.
+- **Daily** — one point per day, derived from the snapshot stream (requires a connected service). For EVs without `Battery Capacity (kWh)` set, the Y-axis is `km / %`; with capacity set, the chart switches to `kWh / 100 km`.
+
+A summary card at the top of the screen shows period totals and average consumption. The period picker matches the one on Charts.
+
+<!-- SCREENSHOT: Efficiency screen — the Efficiency detail screen with the vehicle name subtitle, a summary card at the top with period totals, a chart in the middle (showing fuel + EV trends), and the Per fill-up / Daily granularity toggle plus the period picker below the chart. -->
+![Efficiency](/images/docs/1.2/data-efficiency.png)
+
+## Readings
+
+Tap **Readings** for a flat chronological list of every energy snapshot fetched from your connected services. Each row shows the timestamp, odometer, battery (and fuel where applicable), and a **trigger badge**:
+
+- **Scheduled** (grey) — a routine background or Shortcuts fetch that succeeded.
+- **Manual** (accent) — a user-triggered fetch (from the Latest Reading card long-press or the toolbar button on this screen).
+- **Failed** (red) — a fetch attempt that didn't produce a snapshot. The row's subtitle shows the reason.
+
+A **toolbar button** at the top-right of the list triggers a manual fetch on demand. Useful for testing that the integration is alive or for prompting an immediate snapshot before recording a fill-up.
+
+<!-- SCREENSHOT: Readings list — the Readings screen with the vehicle name subtitle, the manual-fetch toolbar button in the top-right, and a list of snapshot rows showing odometer + battery values with a mix of badges (grey "Scheduled", accent "Manual", red "Failed" with an error message). -->
+![Readings](/images/docs/1.2/data-readings.png)
 
 ## Switching Vehicles
 
-Use the vehicle picker at the top of the Data tab to view data for a specific vehicle. Each vehicle has its own independent snapshot, stats, charts, and map.
+Use the vehicle picker at the top of the Data tab to view data for a specific vehicle. Each vehicle has its own independent Latest Reading card, stats, charts, map, efficiency, and readings list.

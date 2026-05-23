@@ -1,6 +1,6 @@
 ---
 title: "Privacy Policy"
-date: 2026-05-02
+date: 2026-05-22
 description: "Drivest Privacy Policy — all data stays on your device."
 type: "privacy"
 ---

@@ -11,14 +11,12 @@ Reminders help you keep track of upcoming vehicle expenses like insurance renewa
 ### Date-Based Reminders
 
 Triggered by a specific date. Useful for:
-
 - Insurance renewal dates
 - Annual inspections
 - Registration renewals
 - Scheduled service appointments
 
 You can set:
-
 - **Due Date** — when the reminder is due.
 - **Remind days before** — how many days in advance you want to be notified (0–30 days).
 - **Notification time** — the time of day to receive the notification.
@@ -27,24 +25,36 @@ You can set:
 ### Distance-Based Reminders
 
 Triggered when your vehicle approaches a certain odometer reading. Useful for:
-
 - Oil changes
 - Tire rotations
 - Brake inspections
 - Any mileage-based maintenance
 
 You can set:
-
 - **Target odometer** — the odometer reading when the task is due.
 - **Lead distance** — how far in advance (in km or miles) you want to be notified.
 - **Recurrence interval** — distance to advance the target when you mark the reminder as done.
 
 ## Creating a Reminder
 
-When adding a new cost, toggle **Create Reminder** at the bottom of the form. This is useful for recurring expenses — for example, when you pay for insurance, you can immediately set a reminder for next year's renewal. The cost form's Vehicle section (with odometer + location at the top) makes it easy to scaffold a distance-based reminder anchored to the current mileage.
+There are two ways to create a reminder:
+
+### From the Costs tab
+
+When adding a new cost, toggle **Create Reminder** at the bottom of the form. This is useful for recurring expenses — for example, when you pay for insurance, you can immediately set a reminder for next year's renewal.
 
 <!-- SCREENSHOT: Reminder in cost form — the bottom section of the "Add Cost" form with "Create Reminder" toggled on, showing the type picker (Date/Distance segmented control), due date picker, and "Remind days before" stepper. -->
-![Reminder in cost form](/images/docs/1.2/reminders-cost-form.png)
+![Reminder in cost form](/images/docs/1.1/reminders-cost-form.png)
+
+### From the Reminders screen
+
+1. Go to the vehicle detail screen (tap the vehicle name in Settings > Manage Vehicles).
+2. Find the **Reminders** section.
+3. Tap **+** to create a new standalone reminder.
+4. Enter a title, choose the type (date or distance), and configure the details.
+
+<!-- SCREENSHOT: Add reminder form — the "Add Reminder" screen with title field, Date/Distance type selector, due date or target odometer fields, lead time configuration, and recurrence interval. -->
+![Add reminder](/images/docs/1.1/reminders-add.png)
 
 ## Reminder Statuses
 
@@ -56,7 +66,7 @@ Each reminder shows a colored status badge:
 - **Silenced** (gray) — manually silenced by the user.
 
 <!-- SCREENSHOT: Reminder list — the reminders list showing several reminders with different status badges: one red "Overdue", one orange "Due Soon", and one gray "Pending", each with title, category icon, and due date or distance. -->
-![Reminder statuses](/images/docs/1.2/reminders-list.png)
+![Reminder statuses](/images/docs/1.1/reminders-list.png)
 
 ## Managing Reminders
 
@@ -69,4 +79,4 @@ Each reminder shows a colored status badge:
 
 Reminders send local notifications at the configured time. The app will ask for notification permission when you create your first reminder. Notifications are delivered even when the app is not open.
 
-For distance-based reminders, notifications are checked and sent when the app detects a new odometer reading — from a manual fill-up, a charging session, a cost entry with odometer, or a connected service sync.
+For distance-based reminders, notifications are checked and sent when the app detects a new odometer reading (either from a manual fill-up or from a connected service sync).

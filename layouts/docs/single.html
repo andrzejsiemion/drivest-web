@@ -1,7 +1,10 @@
 {{ define "main" }}
 
-{{ $isArchive := strings.HasPrefix .RelPermalink "/docs/v1.0/" }}
-{{ $parentURL := cond $isArchive "/docs/v1.0/" "/docs/" }}
+{{ $archiveVersion := "" }}
+{{ if strings.HasPrefix .RelPermalink "/docs/v1.0/" }}{{ $archiveVersion = "v1.0" }}{{ end }}
+{{ if strings.HasPrefix .RelPermalink "/docs/v1.1/" }}{{ $archiveVersion = "v1.1" }}{{ end }}
+{{ $isArchive := ne $archiveVersion "" }}
+{{ $parentURL := cond $isArchive (printf "/docs/%s/" $archiveVersion) "/docs/" }}
 
 <section class="lp-policy-header">
   <div class="lp-policy-header-inner">
@@ -17,8 +20,9 @@
         <label class="lp-docs-version-label" for="lp-docs-version-select">Version</label>
         <div class="lp-docs-version-select-wrap">
           <select id="lp-docs-version-select" class="lp-docs-version-select" onchange="if(this.value)location.href=this.value;">
-            <option value="/docs/"{{ if not $isArchive }} selected{{ end }}>v1.1 (latest)</option>
-            <option value="/docs/v1.0/"{{ if $isArchive }} selected{{ end }}>v1.0</option>
+            <option value="/docs/"{{ if not $isArchive }} selected{{ end }}>v1.2 (latest)</option>
+            <option value="/docs/v1.1/"{{ if eq $archiveVersion "v1.1" }} selected{{ end }}>v1.1</option>
+            <option value="/docs/v1.0/"{{ if eq $archiveVersion "v1.0" }} selected{{ end }}>v1.0</option>
           </select>
         </div>
       </div>
@@ -32,10 +36,10 @@
       </ul>
     </nav>
     <div class="lp-policy-content lp-docs-content">
-      <a href="{{ $parentURL }}" class="lp-policy-back">&#8592; All Documentation{{ if $isArchive }} (v1.0){{ end }}</a>
+      <a href="{{ $parentURL }}" class="lp-policy-back">&#8592; All Documentation{{ if $isArchive }} ({{ $archiveVersion }}){{ end }}</a>
       {{ if $isArchive }}
       <div class="lp-docs-archive-notice">
-        You're viewing the docs for <strong>Drivest v1.0</strong>. <a href="/docs/">View the latest documentation</a>.
+        You're viewing the docs for <strong>Drivest {{ $archiveVersion }}</strong>. <a href="/docs/">View the latest documentation</a>.
       </div>
       {{ end }}
       {{ .Content }}

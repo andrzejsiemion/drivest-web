@@ -717,6 +717,22 @@
   color: var(--primary);
 }
 
+.lp-policy-content pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.lp-policy-content pre {
+  border-radius: 6px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-size: 0.875em;
+  line-height: 1.5;
+}
+
 .lp-policy-content hr {
   display: none;
 }
