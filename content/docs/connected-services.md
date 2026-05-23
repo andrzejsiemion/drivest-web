@@ -12,12 +12,49 @@ Some vehicle brands offer official APIs that allow Drivest to read your odometer
 
 ### Setup — Volvo
 
-Volvo uses OAuth 2.0 with PKCE. You enter your developer credentials once, then sign in to your Volvo account in-app:
+Volvo uses OAuth 2.0 with PKCE. You first create a free developer app on Volvo's portal (one-time, in a browser), then enter the credentials it gives you into Drivest and sign in to your Volvo account in-app.
+
+#### Create a developer app at developer.volvocars.com
+
+Volvo requires every user to authenticate against their own developer application — there is no shared key Drivest can ship. A Volvo Developers account is free and uses the same Volvo ID you already log into your car with.
+
+1. Open <https://developer.volvocars.com> and sign in (create a Volvo Developers account if you don't have one).
+2. Go to your **Account** page (<https://developer.volvocars.com/account/>) and start a new **API application**.
+3. Fill in all required fields. Two values matter for Drivest:
+   - **Redirect URI** — enter exactly:
+
+     ```
+     https://oauth.pstmn.io/v1/browser-callback
+     ```
+
+     Drivest's in-app sign-in (and the optional Python helper) both redirect here, so it has to match character-for-character.
+   - **Scopes** — request the scopes that cover odometer, fuel, energy and (optionally) location:
+
+     ```
+     openid
+     conve:vehicle_relation
+     conve:odometer_status
+     conve:fuel_status
+     conve:trip_statistics
+     energy:state:read
+     location:read
+     ```
+
+     You can request fewer scopes later, but you can't widen them without re-registering, so it's easiest to ask for the full set up front. Later when you knwo what functions from volvo api is helpful  for you restrict scope to needed minimum.
+     
+4. Finish the registration. At the end of the flow Volvo shows three values — copy them all:
+   - **Client ID**
+   - **Client Secret**
+   - **VCC API Key**
+
+Personal use of the Connected Vehicle API and Energy API is free within Volvo's published rate limits, which Drivest stays well under. Keep the three credentials handy for the next step.
+
+#### Connect Drivest
 
 1. Open **Settings → Integrations → Volvo**.
-2. Expand the **Developer Credentials** section and enter:
-   - **Client ID** and **Client Secret** from your app config in the Volvo Connected Vehicle API developer portal.
-   - **VCC API Key** from the same portal.
+2. Expand the **Developer Credentials** section and enter the three values you copied from the portal:
+   - **Client ID** and **Client Secret**
+   - **VCC API Key**
 
    Tap **Save Credentials**.
 3. Tap the new primary **Sign in with Volvo** button.
