@@ -24,7 +24,7 @@ description: "Logging fill-ups, receipt scanning, and fuel efficiency"
 4. Tap **Save**.
 
 <!-- SCREENSHOT: Add fill-up form — the "Add Fill-Up" screen with vehicle picker at top, odometer with the connected-service download button, the Location row showing a place name and the per-entry icons, and price / volume / total fields filled with sample values. The "Full Tank" toggle should be visible and turned on. -->
-![Add fill-up](/images/docs/1.3/fuel-tracking-add-fillup.png)
+![Add fill-up](/images/docs/1.2/fuel-tracking-add-fillup.png)
 
 ### Smart Field Calculation
 
@@ -49,10 +49,10 @@ The **Location** row in the Vehicle section gives you three controls:
 The first time you save a fill-up, iOS will ask for **"While Using"** location permission. Granting it enables the auto-capture; denying it means no fill-up will carry GPS data until you grant permission later in **Settings > Drivest > Location**.
 
 <!-- SCREENSHOT: Location row controls — close-up of the Location row showing the leading toggle icon (capture on), the displayed place name (e.g. "Warsaw, PL"), and the trailing pin/refresh icon. A second variant of the same row showing "Location · Off" with a slashed icon is also useful. -->
-![Location row](/images/docs/1.3/fuel-tracking-location-row.png)
+![Location row](/images/docs/1.2/fuel-tracking-location-row.png)
 
 <!-- SCREENSHOT: Map picker — the long-press map picker sheet with a draggable pin centred on a sample street and a "Use this location" button at the bottom. -->
-![Location map picker](/images/docs/1.3/fuel-tracking-location-picker.png)
+![Location map picker](/images/docs/1.2/fuel-tracking-location-picker.png)
 
 ### Edit Fill-Up
 
@@ -65,10 +65,10 @@ Tap the **Scan Receipt** button at the top of the Fuel section to use your camer
 The scanned values are filled into the form automatically. You can review and adjust them before saving.
 
 <!-- SCREENSHOT: Take photo option — the fill-up form with the "Scan Receipt" button at the top of the fuel section, showing the entry point for capturing a receipt with the camera. -->
-![Scan Receipt — take photo](/images/docs/1.3/fuel-tracking-receipt-scan-a.png)
+![Scan Receipt — take photo](/images/docs/1.2/fuel-tracking-receipt-scan-a.png)
 
 <!-- SCREENSHOT: OCR result — the fill-up form after a receipt has been scanned, with price per unit, volume, and total cost auto-filled from the OCR pass. -->
-![Scan Receipt — OCR result](/images/docs/1.3/fuel-tracking-receipt-scan-b.png)
+![Scan Receipt — OCR result](/images/docs/1.2/fuel-tracking-receipt-scan-b.png)
 
 ## Fuel Efficiency
 
@@ -81,17 +81,17 @@ The efficiency format depends on your vehicle settings:
 - **MPG (US)** — miles per US gallon.
 - **MPG (UK)** — miles per imperial gallon.
 
-For a period-wide breakdown alongside EV data, see the **Efficiency** chart under [Data → Charts](../data/#charts) (long-window view including home charging).
+For a period-wide breakdown including charts and a Per fill-up / Daily granularity toggle, see [Data → Efficiency](../data/#efficiency).
 
 <!-- SCREENSHOT: Fill-up list with efficiency — the Fuel tab list showing several fill-ups, each with date, volume, cost, and an efficiency badge (e.g. "7.2 L/100km") displayed on the right side. -->
-![Fuel efficiency badges](/images/docs/1.3/fuel-tracking-efficiency.png)
+![Fuel efficiency badges](/images/docs/1.2/fuel-tracking-efficiency.png)
 
 ## Multi-Currency Support
 
 If you have multiple currencies configured (see [Currency](../currency/)), a currency selector appears next to the price and total cost fields. Select the currency you paid in, and the app will store the exchange rate for statistics.
 
 <!-- SCREENSHOT: Currency selector — the fill-up form with the currency badge (e.g. "EUR") visible next to the price field, showing that a non-default currency is selected. -->
-![Currency selector](/images/docs/1.3/fuel-tracking-currency.png)
+![Currency selector](/images/docs/1.2/fuel-tracking-currency.png)
 
 ## Editing and Deleting
 

@@ -8,7 +8,7 @@ If any of your vehicles is set to the **EV** fuel type (either as the primary or
 
 ## EV Tab Layout
 
-The EV tab is a **flat chronological history** of two kinds of entries, newest first:
+In 1.2 the EV tab is a **flat chronological history** of two kinds of entries, newest first:
 
 - ⚡ **Charging sessions** — single paid charging events at public chargers (Tesla Supercharger, Ionity, GreenWay, etc.). Each event has its own date, kWh, cost, and (optional) location.
 - 🧾 **Electricity bills** — monthly home-charging accounting (start / end dates, kWh from meter, total cost).
@@ -16,7 +16,7 @@ The EV tab is a **flat chronological history** of two kinds of entries, newest f
 No more "current period" card and no more separate session/bill lists — both kinds live in one unified timeline so you can browse what happened.
 
 <!-- SCREENSHOT: EV tab — the EV tab showing a flat history list with a mix of charging sessions (⚡ rows with location + kWh + cost) and an electricity bill row (🧾 with date range + total kWh + total cost). A single ➕ floating button is visible in the bottom-right. -->
-![EV tab](/images/docs/1.3/ev-tab.png)
+![EV tab](/images/docs/1.2/ev-tab.png)
 
 ### Adding entries — one button, two gestures
 
@@ -41,7 +41,7 @@ On first launch a contextual hint floats above the button explaining the two ges
 3. Tap **Save**.
 
 <!-- SCREENSHOT: Add charging session — the "Add Charging Session" form showing vehicle picker, odometer with download button, the Location row with a place name, date/time, kWh, total cost, and a couple of the optional fields (charger network or peak power) populated for completeness. -->
-![Add charging session](/images/docs/1.3/ev-add-session.png)
+![Add charging session](/images/docs/1.2/ev-add-session.png)
 
 ### Charging Session Detail
 
@@ -51,7 +51,7 @@ Tap any session in the EV tab to open its detail view. It shows every field you 
 - **Delete** (bottom of the form) removes the session after a confirmation dialog.
 
 <!-- SCREENSHOT: Charging session detail — the read-only detail view for a charging session with the Edit button visible in the toolbar, showing all the populated fields including a small map preview if GPS was captured. -->
-![Charging session detail](/images/docs/1.3/ev-session-detail.png)
+![Charging session detail](/images/docs/1.2/ev-session-detail.png)
 
 ## Adding an Electricity Bill
 
@@ -63,7 +63,7 @@ Tap any session in the EV tab to open its detail view. It shows every field you 
 3. Tap **Save**.
 
 <!-- SCREENSHOT: Add electricity bill — the "Add Electricity Bill" form with the Start section (date + optional odometer), the End section (date + optional odometer), and the Electricity section (total kWh from meter and total cost). -->
-![Add electricity bill](/images/docs/1.3/ev-add-bill.png)
+![Add electricity bill](/images/docs/1.2/ev-add-bill.png)
 
 ### Odometer prefill
 
@@ -79,26 +79,11 @@ The **Latest Reading** card (odometer + battery + fuel, depending on what the in
 
 ## EV Stats on the Data Tab
 
-EV consumption and price-per-kWh trends are computed alongside fuel in the **Data → Stats** and **Data → Charts** screens. The Charts screen has dedicated **Consumption**, **Cost/km**, and **Efficiency** chart types for the dual-axis fuel + EV view. See [Data](../data/).
+EV consumption and price-per-kWh trends are computed alongside fuel in the **Data → Stats**, **Data → Charts**, and **Data → Efficiency** screens. See [Data](../data/).
 
 ## Sync Failure Banner
 
 If the app fails to sync odometer data from a connected service multiple times in a row, a warning banner appears at the top of the screen. Reconnect the integration from **Settings > Integrations** to resolve the issue.
-
-## EV Stats on the Data Tab
-
-When a vehicle is EV-enabled, the [**Data**](../data/) tab shows an **EV** snapshot card with average kWh/100km, last kWh/100km, and the most recent cost per kWh — alongside a **Fuel** card if the vehicle also has a combustion tank (plug-in hybrid). See [Data → Vehicle Snapshot Card](../data/#vehicle-snapshot-card) for details.
-
-## Snapshot History
-
-For connected vehicles (Volvo, Toyota), each automatic fetch records an **energy snapshot** with the odometer and battery state of charge at that moment. Open the **EV** tab → period card → snapshot history list to see each row. Badges indicate how the fetch was triggered:
-
-- **Scheduled** (grey) — a routine background or Shortcuts fetch that succeeded.
-- **Manual** (accent) — a user-triggered fetch.
-- **Failed** (red) — a fetch attempt that didn't produce a snapshot. The row's subtitle shows the reason — typically a transient API error, a missing/expired integration token, or a "Keychain locked" message when a background fetch fired before the device had been unlocked after a reboot. See [Connected Services → Reliability](../connected-services/#reliability).
-
-<!-- SCREENSHOT: EV snapshot history — the EV period detail screen with the snapshot history list visible: rows showing odometer + battery state of charge values and badges in the trailing edge (grey "Scheduled", accent "Manual", red "Failed" with an error message). -->
-![EV snapshot history](/images/docs/1.1/ev-snapshot-history.png)
 
 ## Requirements
 

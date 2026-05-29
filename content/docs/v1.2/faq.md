@@ -189,9 +189,9 @@ The inline reminder persists across closing and re-opening Settings so you don't
 
 Drivest only supports its own `.drivestbackup` format. You would need to convert data from other apps manually.
 
-### Will a 1.1 or 1.2 backup import into 1.3?
+### Will a 1.1 backup import into 1.2?
 
-Yes. Backups produced by 1.1 and 1.2 import cleanly. The optional fields added in 1.2 (cost odometer + location, EV battery capacity, charging-session fields) read as `nil` from older 1.1 backups. 1.3 added no new persisted fields, so 1.2 backups round-trip unchanged. No manual migration is needed.
+Yes. The new optional fields added in 1.2 (cost odometer + location, EV battery capacity, charging-session fields) read as `nil` from older backups. No manual migration is needed.
 
 ## Troubleshooting
 

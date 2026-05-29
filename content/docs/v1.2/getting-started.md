@@ -30,7 +30,7 @@ When you open Drivest for the first time, the app will ask you to add your first
 6. Tap **Save**.
 
 <!-- SCREENSHOT: Vehicle form — the "Add Vehicle" screen filled with sample data (name, make, model, initial odometer). Show the fuel type and distance unit pickers visible. -->
-![Adding a vehicle](/images/docs/1.3/getting-started-add-vehicle.png)
+![Adding a vehicle](/images/docs/1.2/getting-started-add-vehicle.png)
 
 ## Navigating the App
 
@@ -46,7 +46,7 @@ If you have multiple vehicles, use the **vehicle picker card** at the top of eac
 To access Settings, tap the **gear icon** in the top-right corner of any tab.
 
 <!-- SCREENSHOT: Main screen — the Fuel tab with the vehicle picker card at the top showing a vehicle name and odometer, a list of fill-ups below, and the tab bar at the bottom with Fuel, EV (or Costs), Costs, and Data tabs visible. -->
-![Main screen](/images/docs/1.3/getting-started-main-screen.png)
+![Main screen](/images/docs/1.2/getting-started-main-screen.png)
 
 ## Welcome Hints
 
@@ -61,11 +61,11 @@ On first launch Drivest surfaces a handful of contextual coachmarks (popovers) o
 Each hint dismisses itself the first time you actually perform the gesture it explains. To see them all again, open **Settings → Help → Show welcome hints again** and restart the app.
 
 <!-- SCREENSHOT: Welcome hint — a coachmark popover anchored to one of the target controls (for example the EV ➕ button) showing the explanatory text and a small arrow pointing at the control. -->
-![Welcome hint](/images/docs/1.3/getting-started-welcome-hint.png)
+![Welcome hint](/images/docs/1.2/getting-started-welcome-hint.png)
 
 ## Multiple Vehicles
 
 You can track as many vehicles as you need. Add more vehicles from **Settings > Manage Vehicles**, then use the vehicle picker at the top of each tab to switch between them.
 
 <!-- SCREENSHOT: Vehicle picker — the vehicle picker dropdown expanded showing two or more vehicles to choose from, with a checkmark next to the selected one. -->
-![Vehicle picker](/images/docs/1.3/getting-started-vehicle-picker.png)
+![Vehicle picker](/images/docs/1.2/getting-started-vehicle-picker.png)

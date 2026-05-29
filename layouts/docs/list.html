@@ -3,6 +3,7 @@
 {{ $archiveVersion := "" }}
 {{ if strings.HasPrefix .RelPermalink "/docs/v1.0/" }}{{ $archiveVersion = "v1.0" }}{{ end }}
 {{ if strings.HasPrefix .RelPermalink "/docs/v1.1/" }}{{ $archiveVersion = "v1.1" }}{{ end }}
+{{ if strings.HasPrefix .RelPermalink "/docs/v1.2/" }}{{ $archiveVersion = "v1.2" }}{{ end }}
 {{ $isArchive := ne $archiveVersion "" }}
 
 <section class="lp-policy-header">
@@ -20,7 +21,8 @@
         <label class="lp-docs-version-label" for="lp-docs-version-select">Version</label>
         <div class="lp-docs-version-select-wrap">
           <select id="lp-docs-version-select" class="lp-docs-version-select" onchange="if(this.value)location.href=this.value;">
-            <option value="/docs/"{{ if not $isArchive }} selected{{ end }}>v1.2 (latest)</option>
+            <option value="/docs/"{{ if not $isArchive }} selected{{ end }}>v1.3 (latest)</option>
+            <option value="/docs/v1.2/"{{ if eq $archiveVersion "v1.2" }} selected{{ end }}>v1.2</option>
             <option value="/docs/v1.1/"{{ if eq $archiveVersion "v1.1" }} selected{{ end }}>v1.1</option>
             <option value="/docs/v1.0/"{{ if eq $archiveVersion "v1.0" }} selected{{ end }}>v1.0</option>
           </select>
