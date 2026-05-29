@@ -44,7 +44,7 @@ You can set:
 When adding a new cost, toggle **Create Reminder** at the bottom of the form. This is useful for recurring expenses — for example, when you pay for insurance, you can immediately set a reminder for next year's renewal. The cost form's Vehicle section (with odometer + location at the top) makes it easy to scaffold a distance-based reminder anchored to the current mileage.
 
 <!-- SCREENSHOT: Reminder in cost form — the bottom section of the "Add Cost" form with "Create Reminder" toggled on, showing the type picker (Date/Distance segmented control), due date picker, and "Remind days before" stepper. -->
-![Reminder in cost form](/images/docs/1.3/reminders-cost-form.png)
+![Reminder in cost form](/images/docs/1.2/reminders-cost-form.png)
 
 ## Reminder Statuses
 
@@ -56,7 +56,7 @@ Each reminder shows a colored status badge:
 - **Silenced** (gray) — manually silenced by the user.
 
 <!-- SCREENSHOT: Reminder list — the reminders list showing several reminders with different status badges: one red "Overdue", one orange "Due Soon", and one gray "Pending", each with title, category icon, and due date or distance. -->
-![Reminder statuses](/images/docs/1.3/reminders-list.png)
+![Reminder statuses](/images/docs/1.2/reminders-list.png)
 
 ## Managing Reminders
 

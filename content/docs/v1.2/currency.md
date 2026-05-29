@@ -28,7 +28,7 @@ You can add extra currencies to use when logging fill-ups, costs, or charging se
 When you add a fill-up, cost, or charging session, a currency selector appears next to the price fields if you have more than one currency configured.
 
 <!-- SCREENSHOT: Currency settings — the Currency settings screen showing the default currency picker at the top (e.g. "PLN"), the additional currencies section with one or two currencies listed (e.g. "EUR" with rate "4.3000" and last updated date), and the "Add Currency" and "Refresh Rates Now" buttons. -->
-![Currency settings](/images/docs/1.3/currency-settings.png)
+![Currency settings](/images/docs/1.2/currency-settings.png)
 
 ## Exchange Rates
 

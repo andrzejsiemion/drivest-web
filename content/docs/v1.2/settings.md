@@ -7,7 +7,7 @@ description: "Appearance, language, categories, vehicle order, and welcome hints
 Access Settings by tapping the **gear icon** in the top-right corner of any tab.
 
 <!-- SCREENSHOT: Settings screen — the main Settings screen showing all sections: Manage Vehicles, Vehicle Order (with sort picker), Manage section (Currency, Categories, Integrations), Appearance (theme picker with System/Light/Dark), Language, Help, and About. -->
-![Settings](/images/docs/1.3/settings-main.png)
+![Settings](/images/docs/1.2/settings-main.png)
 
 ## Manage Vehicles
 
@@ -45,10 +45,10 @@ Choose between three theme options:
 - **Dark** — always dark.
 
 <!-- SCREENSHOT: Appearance picker — close-up of the Appearance section in Settings showing the segmented control with System / Light / Dark options, with "System" selected. -->
-![Appearance](/images/docs/1.3/settings-appearance.png)
+![Appearance](/images/docs/1.2/settings-appearance.png)
 
 <!-- SCREENSHOT: Dark theme — the app rendered in Dark mode, showing the main screen with the dark colour palette applied across the vehicle picker, fill-up list, and tab bar. -->
-![Dark theme](/images/docs/1.3/dark.png)
+![Dark theme](/images/docs/1.2/dark.png)
 
 ## Language
 
@@ -62,7 +62,7 @@ Drivest supports **English** and **Polski** (Polish). The app language follows y
 The "Restart pending" indicator persists across closing/reopening Settings *and* across foreground/background cycles until you actually restart and the new language is applied — so even if you tap **Done** without restarting, the next time you open Settings the reminder is still there.
 
 <!-- SCREENSHOT: Language picker with restart — the Language section of Settings showing the picker set to "Polski", the inline green checkmark with the "Language saved. Restart the app to apply it." copy underneath, and the red "Restart now" button below that. -->
-![Language restart](/images/docs/1.3/settings-language-restart.png)
+![Language restart](/images/docs/1.2/settings-language-restart.png)
 
 ## Help
 
@@ -79,7 +79,7 @@ On the next launch, Drivest wipes the tip state datastore *before* TipKit config
 > Why the restart? `Tips.resetDatastore()` only takes effect when called *before* `Tips.configure()`. Drivest sets a UserDefault flag on tap and honours it on the next launch.
 
 <!-- SCREENSHOT: Show welcome hints again — the Help → Show welcome hints again row tapped, with the inline green checkmark acknowledgement and the red "Restart now" button visible. -->
-![Show hints again](/images/docs/1.3/settings-show-hints.png)
+![Show hints again](/images/docs/1.2/settings-show-hints.png)
 
 ## About
 

@@ -22,7 +22,7 @@ description: "Recording vehicle expenses by category, with odometer and location
 4. Tap **Save**.
 
 <!-- SCREENSHOT: Add cost form — the "Add Cost" screen with the Vehicle section at the top (vehicle picker, odometer field with the connected-service download button, location row with a captured place name), then the Category picker showing icons (e.g. Insurance with shield icon selected), amount field filled, date picker, and "Create Reminder" toggle at bottom. -->
-![Add cost](/images/docs/1.3/cost-tracking-add-cost.png)
+![Add cost](/images/docs/1.2/cost-tracking-add-cost.png)
 
 ### Why odometer and location?
 
@@ -45,7 +45,7 @@ The app comes with built-in categories:
 - Tickets
 
 <!-- SCREENSHOT: Cost list — the Costs tab showing a list of cost entries grouped or listed chronologically, each with category icon, name, amount, and date. -->
-![Cost list](/images/docs/1.3/cost-tracking-list.png)
+![Cost list](/images/docs/1.2/cost-tracking-list.png)
 
 ### Custom Categories
 
@@ -59,10 +59,10 @@ You can create your own categories and reorder or delete existing ones:
 To reorder categories, tap **Edit** and drag them into your preferred order. To delete a category, swipe left or use the Edit mode.
 
 <!-- SCREENSHOT: Category list — the Categories settings screen showing the list of categories with icons. -->
-![Category list](/images/docs/1.3/cost-tracking-categories-a.png)
+![Category list](/images/docs/1.2/cost-tracking-categories-a.png)
 
 <!-- SCREENSHOT: New category — the "New Category" sheet open with name field filled and the icon selection grid visible. -->
-![New category](/images/docs/1.3/cost-tracking-categories-b.png)
+![New category](/images/docs/1.2/cost-tracking-categories-b.png)
 
 ## Multi-Currency Support
 

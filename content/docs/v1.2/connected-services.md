@@ -65,7 +65,7 @@ Personal use of the Connected Vehicle API and Energy API is free within Volvo's 
 If you tap **Disconnect**, only the refresh token is removed; your Developer Credentials stay so re-signing in is one tap away. Your Volvo account password is **never** seen or stored by Drivest — the in-app browser hands it directly to Volvo ID over HTTPS.
 
 <!-- SCREENSHOT: Volvo sign-in — the Volvo integration screen with the Developer Credentials section filled in (collapsed or expanded) and the primary "Sign in with Volvo" button visible. Optionally a second variant captured mid-flow showing the Volvo ID login page rendered inside the in-app sheet. -->
-![Volvo sign-in](/images/docs/1.3/connected-services-volvo-signin.png)
+![Volvo sign-in](/images/docs/1.2/connected-services-volvo-signin.png)
 
 #### Volvo — power-user fallback
 
@@ -105,7 +105,7 @@ Toyota uses username/password authentication (not OAuth):
 Go to **Settings > Integrations**, select the manufacturer, and tap **Disconnect**. This removes the stored refresh token from your Keychain. Developer Credentials (for Volvo) stay in place so re-signing in doesn't require pasting them again.
 
 <!-- SCREENSHOT: Integrations screen — the Integrations settings screen listing supported manufacturers with a green checkmark beside the connected ones. The "Set auto fetch in Shortcuts" link with the external-link icon is visible at the bottom of the section. -->
-![Integrations](/images/docs/1.3/connected-services-integrations.png)
+![Integrations](/images/docs/1.2/connected-services-integrations.png)
 
 ## Apple Shortcuts Integration
 
@@ -136,10 +136,10 @@ The action returns a short status string — `"Fetched data for [Vehicle name]"`
 > **Note**: an earlier Drivest build exposed this action as **"Fetch Odometer"**. If you had a Shortcut built against that name, it'll appear broken after updating; re-add the **Fetch Data** action and pick your vehicle to fix it.
 
 <!-- SCREENSHOT: Fetch Data action — a Shortcut in the Shortcuts app with the Drivest "Fetch data for [Vehicle]" action visible, the Vehicle parameter set to a specific vehicle (e.g. "Volvo XC60"). -->
-![Fetch Data action](/images/docs/1.3/connected-services-shortcut-action.png)
+![Fetch Data action](/images/docs/1.2/connected-services-shortcut-action.png)
 
 <!-- SCREENSHOT: Scheduled automation — a Personal Automation in the Shortcuts Automation tab summarised as "At 23:55, daily — Fetch data for Volvo XC60", showing how the per-vehicle parameter pairs with a time trigger. -->
-![Scheduled automation](/images/docs/1.3/connected-services-shortcut-automation.png)
+![Scheduled automation](/images/docs/1.2/connected-services-shortcut-automation.png)
 
 ### Reliability
 
@@ -162,7 +162,7 @@ If the API is rate-limited, temporarily unavailable, or the network drops, Drive
 This means **no Shortcuts trigger is silently dropped** — every attempt leaves a visible record. Failed rows are kept indefinitely (or until the 2-year purge cutoff) so you can see attempts even when they didn't succeed.
 
 <!-- SCREENSHOT: Readings list with mixed badges — the Data → Readings list showing several rows with different badges: a grey "Scheduled" row with a fresh odometer value, an accent "Manual" row, and a red "Failed" row whose subtitle shows a "Keychain locked" or similar error message and where the previous odometer is carried over. -->
-![Readings reliability](/images/docs/1.3/connected-services-readings.png)
+![Readings reliability](/images/docs/1.2/connected-services-readings.png)
 
 ## Privacy
 
